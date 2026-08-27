@@ -1,0 +1,617 @@
+/* =========================================================
+   NEXARENA THEME VARIABLES
+   LIGHT & DARK MODE SUPPORT
+========================================================= */
+
+:root {
+    /* ===== LIGHT MODE (Default) ===== */
+    
+    /* Backgrounds */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fc;
+    --bg-tertiary: #fafafa;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --bg-hover: #fff4ee;
+    --bg-danger: #fef2f2;
+    
+    /* Text Colors */
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --text-light: #777777;
+    --text-lighter: #999999;
+    --text-white: #ffffff;
+    
+    /* Borders */
+    --border-primary: #dddddd;
+    --border-secondary: #e5e7eb;
+    --border-light: #eeeeee;
+    --border-input: #e5e7eb;
+    --border-hover: #d1d5db;
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    /* Orange Theme */
+    --orange: #ff6b00;
+    --orange-hover: #e85f00;
+    --orange-light: #fff3e8;
+    --orange-border: #ffd2b0;
+    --orange-gradient: linear-gradient(135deg, #ff6b00, #ff8a5c);
+    --orange-gradient-dark: linear-gradient(135deg, #e85f00, #ff6b00);
+    
+    /* Sidebar */
+    --sidebar-bg: #ffffff;
+    --sidebar-border: rgba(0, 0, 0, 0.05);
+    --sidebar-shadow: rgba(0, 0, 0, 0.06);
+    
+    /* Success / Danger */
+    --success: #166534;
+    --success-bg: #f0fdf4;
+    --success-border: #bbf7d0;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --danger-border: #fecaca;
+    --danger-hover: #b91c1c;
+    
+    /* Misc */
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: #d1d5db;
+    --scrollbar-hover: #ff6b00;
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+[data-theme="dark"] {
+    /* Backgrounds */
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #1a1a2e;
+    --bg-card: #1e1e3a;
+    --bg-input: #2a2a4a;
+    --bg-hover: #2a2a4a;
+    --bg-danger: #2a1a1a;
+    
+    /* Text Colors */
+    --text-primary: #e5e5e5;
+    --text-secondary: #cccccc;
+    --text-muted: #aaaaaa;
+    --text-light: #999999;
+    --text-lighter: #777777;
+    --text-white: #ffffff;
+    
+    /* Borders */
+    --border-primary: #2d2d44;
+    --border-secondary: #2d2d44;
+    --border-light: #2a2a3e;
+    --border-input: #2d2d44;
+    --border-hover: #3d3d5a;
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+    
+    /* Orange Theme (keeps orange consistent) */
+    --orange: #ff6b00;
+    --orange-hover: #ff8533;
+    --orange-light: #2a1a0a;
+    --orange-border: #4a2a0a;
+    --orange-gradient: linear-gradient(135deg, #ff6b00, #ff8533);
+    --orange-gradient-dark: linear-gradient(135deg, #e85f00, #ff6b00);
+    
+    /* Sidebar */
+    --sidebar-bg: #1a1a2e;
+    --sidebar-border: rgba(255, 255, 255, 0.05);
+    --sidebar-shadow: rgba(0, 0, 0, 0.4);
+    
+    /* Success / Danger */
+    --success: #4ade80;
+    --success-bg: #1a2a1a;
+    --success-border: #2a4a2a;
+    --danger: #f87171;
+    --danger-bg: #2a1a1a;
+    --danger-border: #4a2a2a;
+    --danger-hover: #ef4444;
+    
+    /* Scrollbar */
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: #3d3d5a;
+    --scrollbar-hover: #ff6b00;
+}
+
+/* =========================================================
+   BASE DARK MODE STYLES
+========================================================= */
+
+[data-theme="dark"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .dashboard-main,
+[data-theme="dark"] .settings-main,
+[data-theme="dark"] .profile-main,
+[data-theme="dark"] .notifications-main {
+    background: var(--bg-primary);
+}
+
+/* Cards and sections */
+[data-theme="dark"] .fixture-card,
+[data-theme="dark"] .settings-card,
+[data-theme="dark"] .profile-section,
+[data-theme="dark"] .information-card,
+[data-theme="dark"] .sports-profile-card,
+[data-theme="dark"] .activity-card,
+[data-theme="dark"] .notification-card,
+[data-theme="dark"] .settings-section {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .fixture-card:hover,
+[data-theme="dark"] .settings-card:hover,
+[data-theme="dark"] .activity-card:hover {
+    border-color: var(--border-hover);
+}
+
+/* Headers */
+[data-theme="dark"] .fixtures-header,
+[data-theme="dark"] .profile-hero,
+[data-theme="dark"] .settings-header {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .fixtures-header h1,
+[data-theme="dark"] .profile-name h1,
+[data-theme="dark"] .settings-header h1,
+[data-theme="dark"] .section-heading h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .fixtures-header p,
+[data-theme="dark"] .settings-header p,
+[data-theme="dark"] .section-description {
+    color: var(--text-muted);
+}
+
+/* Form elements */
+[data-theme="dark"] .settings-select,
+[data-theme="dark"] .modal-input {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-input);
+}
+
+[data-theme="dark"] .settings-select option {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .settings-select:focus,
+[data-theme="dark"] .modal-input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+}
+
+/* Information display */
+[data-theme="dark"] .info-item {
+    border-bottom-color: var(--border-light);
+}
+
+[data-theme="dark"] .info-label {
+    color: var(--text-lighter);
+}
+
+[data-theme="dark"] .info-item strong {
+    color: var(--text-primary);
+}
+
+/* Toggle switches */
+[data-theme="dark"] .toggle-slider {
+    background: #3d3d5a;
+}
+
+[data-theme="dark"] .toggle-switch input:checked + .toggle-slider {
+    background: var(--orange);
+}
+
+/* Buttons */
+[data-theme="dark"] .cancel-btn {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-input);
+}
+
+[data-theme="dark"] .cancel-btn:hover {
+    background: var(--border-hover);
+}
+
+[data-theme="dark"] .edit-profile-btn {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .edit-profile-btn:hover {
+    background: var(--orange-hover);
+}
+
+/* Notification cards */
+[data-theme="dark"] .notification-card.unread {
+    background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .notification-icon {
+    background: var(--bg-input);
+    border-color: var(--border-input);
+}
+
+[data-theme="dark"] .notification-icon.type-registration,
+[data-theme="dark"] .notification-icon.type-event {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+/* Activity cards */
+[data-theme="dark"] .activity-icon.orange {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+[data-theme="dark"] .activity-icon.black {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .activity-card strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .activity-card span {
+    color: var(--text-muted);
+}
+
+/* Sports cards */
+[data-theme="dark"] .sports-icon {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+[data-theme="dark"] .sports-profile-card span {
+    color: var(--text-lighter);
+}
+
+[data-theme="dark"] .sports-profile-card strong {
+    color: var(--text-primary);
+}
+
+/* Bio card */
+[data-theme="dark"] .bio-card {
+    background: var(--bg-tertiary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .bio-card p {
+    color: var(--text-secondary);
+}
+
+/* Modals */
+[data-theme="dark"] .modal-box {
+    background: var(--bg-card);
+}
+
+[data-theme="dark"] .modal-header {
+    border-bottom-color: var(--border-primary);
+}
+
+[data-theme="dark"] .modal-footer {
+    border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .modal-cancel-btn {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-input);
+}
+
+[data-theme="dark"] .modal-cancel-btn:hover {
+    background: var(--border-hover);
+}
+
+/* Danger zone */
+[data-theme="dark"] .settings-section.danger-zone {
+    background: var(--bg-danger);
+    border-color: var(--danger-border);
+}
+
+[data-theme="dark"] .danger-card .settings-card-header {
+    background: var(--bg-danger);
+    border-bottom-color: var(--danger-border);
+}
+
+[data-theme="dark"] .danger-zone .section-heading span,
+[data-theme="dark"] .danger-zone .section-heading h2 {
+    color: var(--danger);
+}
+
+/* Footer */
+[data-theme="dark"] footer {
+    background: var(--bg-card);
+    border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .footer-logo {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] footer p {
+    color: var(--text-lighter);
+}
+
+/* Sidebar dark mode */
+[data-theme="dark"] .sidebar {
+    background: var(--sidebar-bg);
+    border-right-color: var(--sidebar-border);
+    box-shadow: 4px 0 30px var(--sidebar-shadow);
+}
+
+[data-theme="dark"] .sidebar-logo {
+    background: var(--sidebar-bg);
+    border-bottom-color: var(--border-primary);
+}
+
+[data-theme="dark"] .menu-item {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .menu-item:hover {
+    background: var(--bg-hover);
+    color: var(--orange);
+}
+
+[data-theme="dark"] .menu-item.active {
+    background: var(--orange-gradient);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .menu-icon {
+    color: var(--text-lighter);
+}
+
+[data-theme="dark"] .menu-item.active .menu-icon {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .menu-title {
+    color: var(--text-lighter);
+}
+
+[data-theme="dark"] .sidebar-bottom {
+    background: var(--sidebar-bg);
+    border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .logout-menu {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .logout-menu:hover {
+    background: var(--bg-danger);
+    color: var(--danger);
+}
+
+/* Scrollbar dark mode */
+[data-theme="dark"] .sidebar-menu {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+[data-theme="dark"] .sidebar-menu::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
+[data-theme="dark"] .sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover);
+}
+
+/* Fixture card dark mode */
+[data-theme="dark"] .fixture-teams {
+    background: var(--bg-tertiary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .fixture-team strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .fixture-vs {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .fixture-details div {
+    background: var(--bg-tertiary);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] .fixture-details strong {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .fixture-details span {
+    color: var(--text-lighter);
+}
+
+[data-theme="dark"] .fixture-status {
+    color: var(--text-muted);
+}
+
+/* Message cards dark mode */
+[data-theme="dark"] .settings-message.success {
+    background: var(--success-bg);
+    border-color: var(--success-border);
+    color: var(--success);
+}
+
+[data-theme="dark"] .settings-message.error {
+    background: var(--danger-bg);
+    border-color: var(--danger-border);
+    color: var(--danger);
+}
+
+/* Profile avatar dark mode */
+[data-theme="dark"] .profile-avatar {
+    background: var(--bg-input);
+    border-color: var(--orange);
+}
+
+/* Player badge dark mode */
+[data-theme="dark"] .player-badge {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+    color: var(--orange);
+}
+
+/* Section headings dark mode */
+[data-theme="dark"] .section-heading span {
+    color: var(--orange);
+}
+
+[data-theme="dark"] .page-label {
+    color: var(--orange);
+}
+
+/* Empty states dark mode */
+[data-theme="dark"] .no-fixtures,
+[data-theme="dark"] .empty-notifications {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .no-fixtures h2,
+[data-theme="dark"] .empty-notifications h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .no-fixtures p,
+[data-theme="dark"] .empty-notifications p {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .no-fixtures-icon,
+[data-theme="dark"] .empty-icon {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+/* Theme preview boxes dark mode */
+[data-theme="dark"] .light-preview {
+    background: #ffffff;
+    color: #111111;
+}
+
+[data-theme="dark"] .dark-preview {
+    background: #1a1a2e;
+    color: #e5e5e5;
+    border-color: #2d2d44;
+}
+
+/* Notification count badge dark mode */
+[data-theme="dark"] .unread-label {
+    background: var(--orange-light);
+    color: var(--orange);
+    border-color: var(--orange-border);
+}
+
+[data-theme="dark"] .new-label {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+/* Summary card dark mode */
+[data-theme="dark"] .notification-summary {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+    border-left-color: var(--orange);
+}
+
+[data-theme="dark"] .summary-icon {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+[data-theme="dark"] .summary-content h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .summary-content p {
+    color: var(--text-muted);
+}
+
+/* Fix for dark mode body background */
+[data-theme="dark"] .settings-main,
+[data-theme="dark"] .profile-main,
+[data-theme="dark"] .fixtures-page,
+[data-theme="dark"] .notifications-container {
+    background: var(--bg-primary);
+}
+
+/* Sidebar user profile dark mode */
+[data-theme="dark"] .sidebar-user {
+    background: var(--orange-gradient);
+}
+
+[data-theme="dark"] .user-avatar {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .user-info strong,
+[data-theme="dark"] .user-info small {
+    color: #ffffff;
+}
+
+/* Profile modal dark mode */
+[data-theme="dark"] .profile-modal-box {
+    background: var(--bg-card);
+}
+
+[data-theme="dark"] .profile-modal-header {
+    background: var(--bg-tertiary);
+    border-bottom-color: var(--border-primary);
+}
+
+[data-theme="dark"] .profile-form-group input,
+[data-theme="dark"] .profile-form-group select {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-input);
+}
+
+[data-theme="dark"] .profile-form-group input:focus,
+[data-theme="dark"] .profile-form-group select:focus {
+    border-color: var(--orange);
+    background: var(--bg-input);
+}
+
+[data-theme="dark"] .profile-form-group label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .profile-modal-body h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .profile-subtitle {
+    color: var(--text-muted);
+}

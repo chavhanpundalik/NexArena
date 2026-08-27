@@ -1,0 +1,490 @@
+/* =========================================================
+   NEXARENA REGISTER EVENT
+   WHITE + BLACK + ORANGE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f7f7f7;
+    color: #111111;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.register-main {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    min-height: 100vh;
+}
+
+.register-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 36px;
+    padding: 0 15px;
+
+    background: #111111;
+    color: #ffffff;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+.back-link:hover {
+    background: #ff6600;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.page-header {
+    margin-top: 22px;
+    margin-bottom: 22px;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e4e4e4;
+    border-left: 5px solid #ff6600;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, .04);
+}
+
+.page-header span {
+    color: #ff6600;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.page-header h1 {
+    margin-top: 5px;
+    margin-bottom: 7px;
+
+    color: #111111;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.page-header p {
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-message {
+    margin-bottom: 18px;
+
+    padding: 13px 16px;
+
+    background: #fff1eb;
+
+    border: 1px solid #ffd0bd;
+    border-left: 4px solid #ff6600;
+
+    border-radius: 7px;
+
+    color: #b53f00;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EVENT SUMMARY
+========================================================= */
+
+.event-summary {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 24px;
+
+    background: #111111;
+    color: #ffffff;
+
+    border-radius: 12px;
+
+    margin-bottom: 18px;
+}
+
+.event-icon {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff6600;
+
+    border-radius: 10px;
+
+    font-size: 26px;
+}
+
+.event-summary-content {
+    min-width: 0;
+}
+
+.sport-name {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #ff6600;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-summary h2 {
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.event-summary p {
+    color: #bdbdbd;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details-card {
+    padding: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3e3e3;
+
+    border-radius: 12px;
+
+    margin-bottom: 18px;
+}
+
+.details-card h2 {
+    margin-bottom: 17px;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.detail {
+    padding: 15px;
+
+    background: #fafafa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 8px;
+}
+
+.detail span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #888888;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.detail strong {
+    display: block;
+
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CONFIRM CARD
+========================================================= */
+
+.confirm-card {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3e3e3;
+    border-top: 4px solid #ff6600;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, .04);
+}
+
+.confirm-content span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #ff6600;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.confirm-content h2 {
+    margin-bottom: 4px;
+
+    color: #111111;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.confirm-content p {
+    color: #777777;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.register-button {
+    min-width: 190px;
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #ff6600;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    transition: .2s ease;
+}
+
+.register-button:hover {
+    background: #111111;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, .15);
+}
+
+
+/* =========================================================
+   DISABLED
+========================================================= */
+
+.disabled-button,
+.already-button {
+    min-width: 190px;
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    border-radius: 8px;
+
+    background: #eeeeee;
+    color: #777777;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-align: center;
+}
+
+.already-button {
+    background: #fff1e8;
+    color: #ff6600;
+
+    border: 1px solid #ffd2bd;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .register-main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .register-container {
+        padding: 22px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .register-main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .register-container {
+        padding: 17px 14px 30px;
+    }
+
+    .page-header {
+        padding: 22px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .event-summary {
+        align-items: flex-start;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .confirm-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .confirm-card form,
+    .register-button,
+    .disabled-button,
+    .already-button {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .register-main {
+        margin-left: 64px;
+        width: calc(100% - 64px);
+    }
+
+    .register-container {
+        padding: 14px 10px 25px;
+    }
+
+    .event-summary {
+        padding: 18px;
+    }
+
+    .event-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .event-summary h2 {
+        font-size: 18px;
+    }
+}

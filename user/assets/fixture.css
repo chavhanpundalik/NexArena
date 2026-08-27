@@ -1,0 +1,438 @@
+/* =========================================================
+   NEXARENA FIXTURES PAGE
+   FULLY RESPONSIVE WITH DARK MODE SUPPORT
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.dashboard-main {
+    width: calc(100% - 280px);
+    margin-left: 280px;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fixtures-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.fixtures-header {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    padding: 35px;
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.fixtures-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--orange);
+}
+
+.page-label {
+    display: block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.fixtures-header h1 {
+    margin: 0 0 10px;
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.fixtures-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.all-fixtures-section {
+    margin-bottom: 50px;
+}
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+.section-heading span {
+    display: block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 900;
+}
+
+/* =========================================================
+   ALL FIXTURES GRID
+========================================================= */
+
+.all-fixtures-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.fixture-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.fixture-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--orange);
+}
+
+.fixture-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--orange-border);
+    box-shadow: var(--shadow-md);
+}
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.fixture-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.fixture-sport {
+    background: var(--orange-light);
+    color: var(--orange);
+    border: 1px solid var(--orange-border);
+    padding: 7px 11px;
+    border-radius: 30px;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.fixture-status {
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   EVENT
+========================================================= */
+
+.fixture-card h3 {
+    margin: 0 0 18px;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 900;
+}
+
+/* =========================================================
+   TEAMS
+========================================================= */
+
+.fixture-teams {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 18px 12px;
+    margin-bottom: 18px;
+}
+
+.fixture-team {
+    text-align: center;
+}
+
+.fixture-team strong {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+/* =========================================================
+   VS
+========================================================= */
+
+.fixture-vs {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    font-size: 9px;
+    font-weight: 900;
+}
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.fixture-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.fixture-details div {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.fixture-details div:last-child {
+    grid-column: 1 / -1;
+}
+
+.fixture-details span {
+    display: block;
+    color: var(--text-lighter);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.fixture-details strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.no-fixtures {
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    padding: 60px 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.no-fixtures-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    background: var(--orange-light);
+    border: 1px solid var(--orange-border);
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+.no-fixtures h2 {
+    color: var(--text-primary);
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.no-fixtures p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 13px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+    .dashboard-main {
+        width: calc(100% - 280px);
+        margin-left: 280px;
+    }
+    .fixtures-page {
+        padding: 30px 25px 50px;
+    }
+    .all-fixtures-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-main {
+        width: calc(100% - 240px);
+        margin-left: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-main {
+        width: calc(100% - 76px);
+        margin-left: 76px;
+    }
+    .fixtures-page {
+        padding: 20px 16px 40px;
+    }
+    .fixtures-header {
+        padding: 25px 20px;
+        border-radius: 14px;
+        margin-bottom: 25px;
+    }
+    .fixtures-header h1 {
+        font-size: 28px;
+    }
+    .fixtures-header p {
+        font-size: 13px;
+    }
+    .section-heading h2 {
+        font-size: 23px;
+    }
+    .all-fixtures-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .fixture-card {
+        padding: 18px;
+        border-radius: 14px;
+    }
+    .fixture-card h3 {
+        font-size: 17px;
+    }
+    .fixture-teams {
+        grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+        padding: 15px 8px;
+    }
+    .fixture-team strong {
+        font-size: 13px;
+    }
+    .fixture-vs {
+        width: 38px;
+        height: 38px;
+        font-size: 8px;
+    }
+    .fixture-details {
+        grid-template-columns: 1fr 1fr;
+    }
+    .fixture-details strong {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 500px) {
+    .fixture-details {
+        grid-template-columns: 1fr;
+    }
+    .fixture-details div:last-child {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .dashboard-main {
+        width: calc(100% - 68px);
+        margin-left: 68px;
+    }
+    .fixtures-page {
+        padding: 14px 10px 30px;
+    }
+    .fixtures-header h1 {
+        font-size: 22px;
+    }
+    .fixture-card {
+        padding: 15px;
+    }
+    .fixture-card h3 {
+        font-size: 16px;
+    }
+    .fixture-teams {
+        grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
+        padding: 13px 6px;
+    }
+    .fixture-team strong {
+        font-size: 11px;
+    }
+    .fixture-vs {
+        width: 34px;
+        height: 34px;
+    }
+    .fixture-details strong {
+        font-size: 10px;
+    }
+}

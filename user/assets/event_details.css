@@ -1,0 +1,758 @@
+/* =========================================================
+   NEXARENA EVENT DETAILS
+   BLACK + WHITE + ORANGE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #f5f5f5;
+
+    color: #111;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   SIDEBAR SPACE
+========================================================= */
+
+.event-details-main {
+
+    margin-left: 270px;
+
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+}
+
+
+.event-details-container {
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding: 25px 30px 45px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.page-navigation {
+
+    margin-bottom: 18px;
+}
+
+
+.back-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 35px;
+
+    padding: 0 14px;
+
+    background: #111;
+
+    color: #fff;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+
+.back-link:hover {
+
+    background: #ff6600;
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.event-hero {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 32px;
+
+    background: #111;
+
+    border-left: 5px solid #ff6600;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+
+    margin-bottom: 25px;
+}
+
+
+.hero-left {
+
+    min-width: 0;
+}
+
+
+.sport-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 13px;
+
+    color: #ff6600;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+.sport-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ff6600;
+
+    color: #fff;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+}
+
+
+.hero-left h1 {
+
+    margin-bottom: 10px;
+
+    color: #fff;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    letter-spacing: -.5px;
+
+    word-break: break-word;
+}
+
+
+.hero-left p {
+
+    max-width: 720px;
+
+    color: #cfcfcf;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.hero-right {
+
+    width: 120px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.hero-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ff6600;
+
+    color: #fff;
+
+    border-radius: 14px;
+
+    font-size: 30px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+
+    margin-bottom: 15px;
+}
+
+
+.section-heading > span {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #ff6600;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.section-heading h2 {
+
+    color: #111;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.information-section {
+
+    margin-bottom: 25px;
+}
+
+
+.information-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.info-card {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 17px;
+
+    background: #fff;
+
+    border: 1px solid #e2e2e2;
+
+    border-radius: 10px;
+
+    transition: .2s ease;
+}
+
+
+.info-card:hover {
+
+    border-color: #ff6600;
+
+    transform: translateY(-2px);
+}
+
+
+.info-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #111;
+
+    color: #fff;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.info-card small {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #888;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+.info-card strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    color: #111;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    font-weight: 800;
+}
+
+
+.status-text.open {
+
+    color: #ff6600 !important;
+}
+
+
+.status-text.registration-not-open {
+
+    color: #777 !important;
+}
+
+
+.status-text.registration-closed {
+
+    color: #777 !important;
+}
+
+
+.status-text.cancelled {
+
+    color: #111 !important;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description-section {
+
+    margin-bottom: 25px;
+}
+
+
+.description-box {
+
+    min-height: 100px;
+
+    padding: 22px;
+
+    background: #fff;
+
+    border: 1px solid #e2e2e2;
+
+    border-radius: 10px;
+
+    color: #555;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   REGISTRATION CTA
+========================================================= */
+
+.registration-section {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 25px 28px;
+
+    background: #111;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.07);
+}
+
+
+.registration-text span {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #ff6600;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.registration-text h2 {
+
+    margin-bottom: 5px;
+
+    color: #fff;
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+.registration-text p {
+
+    color: #aaa;
+
+    font-size: 11px;
+}
+
+
+.registration-action {
+
+    flex-shrink: 0;
+}
+
+
+.register-button {
+
+    min-width: 155px;
+
+    min-height: 43px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 18px;
+
+    background: #ff6600;
+
+    color: #fff;
+
+    border: 1px solid #ff6600;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition: .2s ease;
+}
+
+
+.register-button:hover {
+
+    background: #fff;
+
+    color: #111;
+
+    border-color: #fff;
+
+    transform: translateY(-2px);
+}
+
+
+.disabled-button {
+
+    min-width: 155px;
+
+    min-height: 43px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 18px;
+
+    background: #292929;
+
+    color: #888;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .information-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .event-details-main {
+
+        margin-left: 220px;
+
+        width: calc(100% - 220px);
+    }
+
+
+    .event-details-container {
+
+        padding: 22px 20px 35px;
+    }
+
+
+    .event-hero {
+
+        padding: 25px;
+    }
+
+
+    .hero-left h1 {
+
+        font-size: 28px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .event-details-main {
+
+        margin-left: 70px;
+
+        width: calc(100% - 70px);
+    }
+
+
+    .event-details-container {
+
+        padding: 17px 14px 30px;
+    }
+
+
+    .event-hero {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 22px;
+    }
+
+
+    .hero-left h1 {
+
+        font-size: 24px;
+    }
+
+
+    .hero-right {
+
+        display: none;
+    }
+
+
+    .information-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .registration-section {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .registration-action {
+
+        width: 100%;
+    }
+
+
+    .register-button,
+    .disabled-button {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .event-details-main {
+
+        margin-left: 64px;
+
+        width: calc(100% - 64px);
+    }
+
+
+    .event-details-container {
+
+        padding: 14px 10px 25px;
+    }
+
+
+    .event-hero {
+
+        padding: 18px;
+    }
+
+
+    .hero-left h1 {
+
+        font-size: 21px;
+    }
+
+
+    .description-box {
+
+        padding: 17px;
+    }
+
+}

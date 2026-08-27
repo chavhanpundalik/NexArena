@@ -1,0 +1,665 @@
+/* =========================================================
+   RESPONSIVE REGISTRATION PAGE
+   WITH SIDEBAR (270px)
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f8f9fc;
+    min-height: 100vh;
+    display: flex;
+    margin-left: 270px;
+}
+
+/* =========================================================
+   MAIN CONTENT - WITH SIDEBAR MARGIN
+========================================================= */
+
+.registration-page {
+    flex: 1;
+    margin-left: 270px;
+    padding: 40px;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+    max-width: calc(100% - 270px);
+}
+
+/* =========================================================
+   BACK LINK
+========================================================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid #e5e7eb;
+}
+
+.back-link:hover {
+    color: #ff6b35;
+    border-color: #ff6b35;
+    transform: translateX(-3px);
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.registration-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   EVENT PANEL
+========================================================= */
+
+.event-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef0f4;
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+}
+
+.event-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.event-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff6b35;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.event-icon {
+    font-size: 40px;
+}
+
+.event-panel h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.event-description {
+    color: #6b7280;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 16px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid #eef0f4;
+}
+
+.detail-icon {
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.event-detail div {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-detail small {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.event-detail strong {
+    font-size: 15px;
+    color: #1a1a2e;
+    font-weight: 700;
+}
+
+/* =========================================================
+   REGISTRATION CARD
+========================================================= */
+
+.registration-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef0f4;
+}
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+.form-heading span {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff6b35;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.form-heading h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin: 8px 0 5px;
+}
+
+.form-heading p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* =========================================================
+   USER BOX
+========================================================= */
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #f8f9fc, #ffffff);
+    border-radius: 14px;
+    border: 2px solid #eef0f4;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff6b35, #ff8a5c);
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+.user-box div {
+    flex: 1;
+}
+
+.user-box small {
+    font-size: 10px;
+    color: #6b7280;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.user-box strong {
+    display: block;
+    font-size: 16px;
+    color: #1a1a2e;
+    font-weight: 700;
+}
+
+.user-box span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================================================
+   SELECTED EVENT
+========================================================= */
+
+.selected-event {
+    padding: 16px 20px;
+    background: #fff4ee;
+    border-radius: 12px;
+    border: 2px solid #ffd6c0;
+    margin-bottom: 25px;
+}
+
+.selected-event span {
+    font-size: 10px;
+    color: #ff6b35;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.selected-event strong {
+    display: block;
+    font-size: 16px;
+    color: #1a1a2e;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+/* =========================================================
+   CONFIRM CHECKBOX
+========================================================= */
+
+.confirm-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 2px solid #eef0f4;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 25px;
+}
+
+.confirm-box:hover {
+    border-color: #ff6b35;
+    background: #fff8f5;
+}
+
+.confirm-box input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin-top: 1px;
+    accent-color: #ff6b35;
+    cursor: pointer;
+}
+
+.confirm-box span {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.register-button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ff6b35, #ff8a5c);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+.form-note {
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.message {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.page-message {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    margin: 20px 20px 20px 290px;
+    transition: all 0.3s ease;
+}
+
+.page-message:not(.error) {
+    background: #d1fae5;
+    border: 1px solid #a7f3d0;
+}
+
+.page-message.error {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+.page-message-icon {
+    font-size: 24px;
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.page-message:not(.error) .page-message-icon {
+    background: #065f46;
+    color: white;
+}
+
+.page-message.error .page-message-icon {
+    background: #991b1b;
+    color: white;
+}
+
+.page-message-content {
+    flex: 1;
+}
+
+.page-message-title {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1a2e;
+}
+
+.page-message-text {
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.page-message-close {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.2s ease;
+    line-height: 1;
+}
+
+.page-message-close:hover {
+    color: #1a1a2e;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+    .registration-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .event-panel {
+        position: static;
+        order: 1;
+    }
+
+    .registration-card {
+        order: 2;
+    }
+
+    .registration-page {
+        padding: 30px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE (Sidebar collapses)
+========================================================= */
+
+@media (max-width: 768px) {
+    .registration-page {
+        margin-left: 76px;
+        padding: 20px;
+        max-width: calc(100% - 76px);
+    }
+
+    .page-message {
+        margin: 15px 15px 15px 90px;
+        padding: 14px 16px;
+    }
+
+    .page-message-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+
+    .registration-layout {
+        gap: 20px;
+    }
+
+    .event-panel {
+        padding: 25px;
+    }
+
+    .event-panel h1 {
+        font-size: 22px;
+    }
+
+    .registration-card {
+        padding: 25px;
+    }
+
+    .form-heading h2 {
+        font-size: 20px;
+    }
+
+    .user-box {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 16px;
+    }
+
+    .event-detail {
+        padding: 10px 14px;
+    }
+
+    .event-detail strong {
+        font-size: 14px;
+    }
+
+    .back-link {
+        font-size: 13px;
+        padding: 6px 14px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - VERY SMALL
+========================================================= */
+
+@media (max-width: 480px) {
+    .registration-page {
+        margin-left: 68px;
+        padding: 15px;
+        max-width: calc(100% - 68px);
+    }
+
+    .page-message {
+        margin: 10px 10px 10px 78px;
+        padding: 12px 14px;
+        flex-wrap: wrap;
+    }
+
+    .page-message-content {
+        flex: 1 1 100%;
+        order: 2;
+    }
+
+    .page-message-icon {
+        order: 1;
+    }
+
+    .page-message-close {
+        order: 3;
+    }
+
+    .event-panel {
+        padding: 20px;
+    }
+
+    .event-panel h1 {
+        font-size: 20px;
+    }
+
+    .registration-card {
+        padding: 20px;
+    }
+
+    .form-heading h2 {
+        font-size: 18px;
+    }
+
+    .user-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .user-box div {
+        text-align: center;
+    }
+
+    .event-detail {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .event-detail div {
+        text-align: center;
+    }
+
+    .confirm-box {
+        padding: 14px 16px;
+    }
+
+    .confirm-box span {
+        font-size: 13px;
+    }
+
+    .register-button {
+        font-size: 15px;
+        padding: 14px;
+    }
+
+    .back-link {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - VERY SMALL (400px and below)
+========================================================= */
+
+@media (max-width: 400px) {
+    .registration-page {
+        margin-left: 60px;
+        padding: 12px;
+        max-width: calc(100% - 60px);
+    }
+
+    .page-message {
+        margin: 8px 8px 8px 68px;
+        padding: 10px 12px;
+    }
+
+    .event-panel {
+        padding: 16px;
+    }
+
+    .event-panel h1 {
+        font-size: 18px;
+    }
+
+    .registration-card {
+        padding: 16px;
+    }
+
+    .event-detail {
+        padding: 8px 12px;
+    }
+
+    .event-detail strong {
+        font-size: 13px;
+    }
+}

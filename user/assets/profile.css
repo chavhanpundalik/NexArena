@@ -1,0 +1,1287 @@
+/* =========================================================
+   NEXARENA USER PROFILE
+   FULLY RESPONSIVE WITH DARK MODE SUPPORT
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================================
+   MAIN AREA - RESPONSIVE WITH SIDEBAR
+========================================================= */
+
+.profile-main {
+    width: calc(100% - 280px);
+    margin-left: 280px;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .profile-main {
+    background: var(--bg-primary);
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* =========================================================
+   PROFILE HERO
+========================================================= */
+
+.profile-hero {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 35px;
+    margin-bottom: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+[data-theme="dark"] .profile-hero {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+.profile-hero::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--orange);
+}
+
+.profile-identity {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    min-width: 0;
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.profile-avatar {
+    width: 105px;
+    height: 105px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-input);
+    border: 5px solid var(--orange);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 900;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .profile-avatar {
+    background: var(--bg-input);
+    border-color: var(--orange);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================================
+   PROFILE NAME
+========================================================= */
+
+.profile-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+[data-theme="dark"] .profile-label {
+    color: var(--orange);
+}
+
+.profile-name {
+    min-width: 0;
+}
+
+.profile-name h1 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .profile-name h1 {
+    color: var(--text-primary);
+}
+
+.profile-name p {
+    margin: 0 0 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .profile-name p {
+    color: var(--text-muted);
+}
+
+.player-badge {
+    display: inline-block;
+    padding: 6px 13px;
+    background: var(--orange-light);
+    border: 1px solid var(--orange-border);
+    border-radius: 30px;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+[data-theme="dark"] .player-badge {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+    color: var(--orange);
+}
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.edit-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: var(--orange);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.25s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .edit-profile-btn {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+.edit-profile-btn:hover {
+    background: var(--orange-hover);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.profile-section {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .profile-section {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.section-heading span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+[data-theme="dark"] .section-heading span {
+    color: var(--orange);
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 23px;
+    font-weight: 900;
+}
+
+[data-theme="dark"] .section-heading h2 {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.information-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.information-card {
+    min-width: 0;
+    padding: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    transition: 0.25s ease;
+}
+
+[data-theme="dark"] .information-card {
+    background: var(--bg-card);
+    border-color: var(--border-light);
+}
+
+.information-card:hover {
+    border-color: var(--orange-border);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .information-card:hover {
+    border-color: var(--orange-border);
+}
+
+.information-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-lighter);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+[data-theme="dark"] .information-card span {
+    color: var(--text-lighter);
+}
+
+.information-card strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 14px;
+    word-break: break-word;
+}
+
+[data-theme="dark"] .information-card strong {
+    color: var(--text-primary);
+}
+
+.orange-text {
+    color: var(--orange) !important;
+}
+
+[data-theme="dark"] .orange-text {
+    color: var(--orange) !important;
+}
+
+/* =========================================================
+   SPORTS PROFILE
+========================================================= */
+
+.sports-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.sports-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    padding: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 13px;
+}
+
+[data-theme="dark"] .sports-profile-card {
+    background: var(--bg-card);
+    border-color: var(--border-light);
+}
+
+.sports-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-light);
+    border: 1px solid var(--orange-border);
+    border-radius: 11px;
+    font-size: 20px;
+}
+
+[data-theme="dark"] .sports-icon {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+.sports-profile-card > div {
+    min-width: 0;
+}
+
+.sports-profile-card span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-lighter);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+[data-theme="dark"] .sports-profile-card span {
+    color: var(--text-lighter);
+}
+
+.sports-profile-card strong {
+    color: var(--text-primary);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .sports-profile-card strong {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   BIO
+========================================================= */
+
+.bio-card {
+    margin-top: 15px;
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: 13px;
+}
+
+[data-theme="dark"] .bio-card {
+    background: var(--bg-tertiary);
+    border-color: var(--border-light);
+}
+
+.bio-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+[data-theme="dark"] .bio-card span {
+    color: var(--orange);
+}
+
+.bio-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+[data-theme="dark"] .bio-card p {
+    color: var(--text-secondary);
+}
+
+.bio-card .empty-bio {
+    color: var(--text-lighter);
+    font-style: italic;
+}
+
+[data-theme="dark"] .bio-card .empty-bio {
+    color: var(--text-lighter);
+}
+
+/* =========================================================
+   ACTIVITY
+========================================================= */
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.activity-card {
+    text-align: center;
+    min-width: 0;
+    padding: 25px 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 15px;
+    transition: 0.25s ease;
+}
+
+[data-theme="dark"] .activity-card {
+    background: var(--bg-card);
+    border-color: var(--border-primary);
+}
+
+.activity-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .activity-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.activity-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.activity-icon.orange {
+    background: var(--orange-light);
+    border: 1px solid var(--orange-border);
+}
+
+[data-theme="dark"] .activity-icon.orange {
+    background: var(--orange-light);
+    border-color: var(--orange-border);
+}
+
+.activity-icon.black {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .activity-icon.black {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+.activity-card strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+    font-size: 26px;
+    font-weight: 900;
+}
+
+[data-theme="dark"] .activity-card strong {
+    color: var(--text-primary);
+}
+
+.activity-card span {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .activity-card span {
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   ACCOUNT ACTIONS
+========================================================= */
+
+.account-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.25s ease;
+}
+
+.orange-btn {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .orange-btn {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+.orange-btn:hover {
+    background: var(--orange-hover);
+    transform: translateY(-2px);
+}
+
+.black-btn {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-input);
+}
+
+[data-theme="dark"] .black-btn {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-input);
+}
+
+.black-btn:hover {
+    background: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    width: 100%;
+    padding: 25px 40px;
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-card);
+    text-align: center;
+}
+
+[data-theme="dark"] footer {
+    background: var(--bg-card);
+    border-top-color: var(--border-light);
+}
+
+.footer-logo {
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+[data-theme="dark"] .footer-logo {
+    color: var(--text-primary);
+}
+
+.footer-logo span {
+    color: var(--orange);
+}
+
+[data-theme="dark"] .footer-logo span {
+    color: var(--orange);
+}
+
+footer p {
+    margin: 0;
+    color: var(--text-lighter);
+    font-size: 11px;
+}
+
+[data-theme="dark"] footer p {
+    color: var(--text-lighter);
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+========================================================= */
+
+/* LARGE DESKTOP (1400px+) */
+@media (min-width: 1400px) {
+    .profile-container {
+        padding: 45px 50px;
+    }
+    .profile-hero {
+        padding: 40px;
+    }
+    .profile-name h1 {
+        font-size: 36px;
+    }
+}
+
+/* LAPTOP (1200px - 1399px) */
+@media (max-width: 1399px) {
+    .profile-container {
+        padding: 35px 30px;
+    }
+    .information-grid,
+    .sports-profile-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .activity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* SMALL LAPTOP / LARGE TABLET (1024px - 1199px) */
+@media (max-width: 1199px) {
+    .profile-container {
+        padding: 30px 25px;
+    }
+    .profile-hero {
+        padding: 28px 25px;
+    }
+    .profile-name h1 {
+        font-size: 28px;
+    }
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 26px;
+    }
+    .information-grid,
+    .sports-profile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .activity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* TABLET LANDSCAPE (900px - 1023px) */
+@media (max-width: 1023px) and (min-width: 769px) {
+    .profile-main {
+        width: calc(100% - 240px);
+        margin-left: 240px;
+    }
+    .profile-container {
+        padding: 28px 22px 40px;
+    }
+    .profile-hero {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 22px;
+        border-radius: 16px;
+    }
+    .profile-identity {
+        width: 100%;
+    }
+    .edit-profile-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .profile-name h1 {
+        font-size: 28px;
+    }
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+        border-width: 4px;
+    }
+    .information-grid,
+    .sports-profile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .activity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .profile-section {
+        padding: 22px 18px;
+    }
+    .section-heading h2 {
+        font-size: 21px;
+    }
+}
+
+/* TABLET PORTRAIT / MOBILE LANDSCAPE (550px - 768px) */
+@media (max-width: 768px) {
+    .profile-main {
+        width: calc(100% - 76px);
+        margin-left: 76px;
+    }
+    .profile-container {
+        width: 100%;
+        padding: 20px 16px 40px;
+    }
+    .profile-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+    .profile-identity {
+        width: 100%;
+        gap: 17px;
+        align-items: center;
+    }
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+        font-size: 24px;
+        border-width: 4px;
+    }
+    .profile-name h1 {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    .profile-name p {
+        font-size: 12px;
+    }
+    .edit-profile-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+    .profile-section {
+        padding: 20px 16px;
+        border-radius: 15px;
+        margin-bottom: 22px;
+    }
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+    .section-heading h2 {
+        font-size: 20px;
+    }
+    .information-grid,
+    .sports-profile-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    .activity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .information-card {
+        padding: 15px;
+    }
+    .information-card strong {
+        font-size: 13px;
+    }
+    .sports-profile-card {
+        padding: 15px;
+    }
+    .sports-profile-card strong {
+        font-size: 12px;
+    }
+    .sports-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 18px;
+    }
+    .bio-card {
+        padding: 16px;
+    }
+    .bio-card p {
+        font-size: 12px;
+    }
+    .activity-card {
+        padding: 20px 12px;
+    }
+    .activity-card strong {
+        font-size: 22px;
+    }
+    .activity-card span {
+        font-size: 10px;
+    }
+    .activity-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+    .account-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+    footer {
+        padding: 20px 15px;
+    }
+    .footer-logo {
+        font-size: 18px;
+    }
+    footer p {
+        font-size: 10px;
+    }
+}
+
+/* MOBILE PORTRAIT (400px - 549px) */
+@media (max-width: 549px) {
+    .profile-main {
+        width: calc(100% - 76px);
+        margin-left: 76px;
+    }
+    .profile-container {
+        padding: 16px 12px 35px;
+    }
+    .profile-hero {
+        padding: 22px 17px;
+        border-radius: 13px;
+        margin-bottom: 22px;
+    }
+    .profile-identity {
+        gap: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        font-size: 22px;
+        border-width: 4px;
+    }
+    .profile-name h1 {
+        font-size: 23px;
+    }
+    .profile-name p {
+        font-size: 11px;
+    }
+    .profile-label {
+        font-size: 9px;
+    }
+    .player-badge {
+        font-size: 9px;
+        padding: 5px 11px;
+    }
+    .profile-section {
+        padding: 18px 14px;
+        border-radius: 13px;
+        margin-bottom: 18px;
+    }
+    .section-heading h2 {
+        font-size: 18px;
+    }
+    .section-heading span {
+        font-size: 8px;
+    }
+    .information-card {
+        padding: 13px;
+    }
+    .information-card span {
+        font-size: 8px;
+    }
+    .information-card strong {
+        font-size: 12px;
+    }
+    .sports-profile-card {
+        padding: 13px;
+        gap: 12px;
+    }
+    .sports-profile-card span {
+        font-size: 7px;
+    }
+    .sports-profile-card strong {
+        font-size: 11px;
+    }
+    .sports-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 16px;
+    }
+    .bio-card {
+        padding: 14px;
+    }
+    .bio-card p {
+        font-size: 11px;
+    }
+    .activity-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+    .activity-card {
+        padding: 18px 12px;
+        border-radius: 12px;
+    }
+    .activity-card strong {
+        font-size: 20px;
+    }
+    .activity-card span {
+        font-size: 10px;
+    }
+    .activity-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+    .action-btn {
+        font-size: 11px;
+        padding: 12px 16px;
+    }
+}
+
+/* VERY SMALL PHONES (360px - 399px) */
+@media (max-width: 399px) and (min-width: 361px) {
+    .profile-main {
+        width: calc(100% - 68px);
+        margin-left: 68px;
+    }
+    .profile-container {
+        padding: 14px 10px 30px;
+    }
+    .profile-hero {
+        padding: 18px 14px;
+    }
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        font-size: 18px;
+        border-width: 3px;
+    }
+    .profile-name h1 {
+        font-size: 20px;
+    }
+    .profile-name p {
+        font-size: 10px;
+    }
+    .profile-section {
+        padding: 16px 12px;
+    }
+    .section-heading h2 {
+        font-size: 17px;
+    }
+    .information-card {
+        padding: 11px;
+    }
+    .information-card strong {
+        font-size: 11px;
+    }
+    .sports-profile-card {
+        padding: 11px;
+        gap: 10px;
+    }
+    .sports-profile-card strong {
+        font-size: 10px;
+    }
+    .sports-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 14px;
+    }
+    .bio-card p {
+        font-size: 10px;
+    }
+    .activity-card {
+        padding: 15px 10px;
+    }
+    .activity-card strong {
+        font-size: 18px;
+    }
+    .activity-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+}
+
+/* EXTRA SMALL DEVICES (360px and below) */
+@media (max-width: 360px) {
+    .profile-main {
+        width: calc(100% - 68px);
+        margin-left: 68px;
+    }
+    .profile-container {
+        padding: 12px 8px 28px;
+    }
+    .profile-hero {
+        padding: 16px 12px;
+        gap: 15px;
+        border-radius: 11px;
+        margin-bottom: 18px;
+    }
+    .profile-identity {
+        gap: 10px;
+    }
+    .profile-avatar {
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+        font-size: 16px;
+        border-width: 3px;
+    }
+    .profile-name h1 {
+        font-size: 18px;
+    }
+    .profile-name p {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+    .profile-label {
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+    .player-badge {
+        font-size: 8px;
+        padding: 4px 9px;
+    }
+    .edit-profile-btn {
+        font-size: 11px;
+        padding: 11px 16px;
+    }
+    .profile-section {
+        padding: 14px 10px;
+        border-radius: 11px;
+        margin-bottom: 15px;
+    }
+    .section-heading {
+        margin-bottom: 14px;
+    }
+    .section-heading h2 {
+        font-size: 16px;
+    }
+    .section-heading span {
+        font-size: 7px;
+        margin-bottom: 4px;
+    }
+    .information-grid {
+        gap: 8px;
+    }
+    .information-card {
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .information-card span {
+        font-size: 7px;
+        margin-bottom: 5px;
+    }
+    .information-card strong {
+        font-size: 10px;
+    }
+    .sports-profile-grid {
+        gap: 8px;
+    }
+    .sports-profile-card {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+    .sports-profile-card span {
+        font-size: 6.5px;
+        margin-bottom: 4px;
+    }
+    .sports-profile-card strong {
+        font-size: 10px;
+    }
+    .sports-icon {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    .bio-card {
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+    .bio-card span {
+        font-size: 8px;
+        margin-bottom: 6px;
+    }
+    .bio-card p {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+    .activity-grid {
+        gap: 8px;
+    }
+    .activity-card {
+        padding: 14px 10px;
+        border-radius: 10px;
+    }
+    .activity-card strong {
+        font-size: 16px;
+    }
+    .activity-card span {
+        font-size: 9px;
+    }
+    .activity-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .account-actions {
+        gap: 8px;
+    }
+    .action-btn {
+        font-size: 10px;
+        padding: 10px 14px;
+        border-radius: 8px;
+    }
+    footer {
+        padding: 15px 10px;
+    }
+    .footer-logo {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    footer p {
+        font-size: 9px;
+    }
+}
+
+/* =========================================================
+   SIDEBAR HIDDEN STATE
+========================================================= */
+
+.sidebar-hidden .profile-main {
+    width: 100%;
+    margin-left: 0;
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+    .information-card:hover {
+        border-color: var(--border-light);
+        box-shadow: none;
+    }
+    .activity-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .edit-profile-btn:hover,
+    .action-btn:hover,
+    .orange-btn:hover,
+    .black-btn:hover {
+        transform: none;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(255, 107, 0, 0.35);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+    .activity-card:hover,
+    .edit-profile-btn:hover {
+        transform: none !important;
+    }
+}
+
+/* =========================================================
+   PRINT STYLES
+========================================================= */
+
+@media print {
+    .sidebar {
+        display: none;
+    }
+    .profile-main {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    .profile-hero {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+    }
+    .profile-section {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+    .edit-profile-btn,
+    .action-btn {
+        display: none;
+    }
+    .activity-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}

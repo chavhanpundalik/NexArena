@@ -1,0 +1,493 @@
+/* =========================================================
+   NEXARENA EDIT PROFILE
+   WHITE + BLACK + ORANGE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #111111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.edit-profile-main {
+    width: calc(100% - 270px);
+    margin-left: 270px;
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.edit-profile-container {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.page-header > div > span {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #ff6b00;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.page-header p {
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 18px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    border-color: #ff6b00;
+    color: #ff6b00;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+========================================================= */
+
+.form-section {
+    margin-bottom: 25px;
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+    border-radius: 17px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    margin-bottom: 22px;
+}
+
+.section-title span {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #ff6b00;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.image-area {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.current-avatar {
+    width: 105px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 5px solid #ff6b00;
+    border-radius: 50%;
+
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.current-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.image-content h3 {
+    margin: 0 0 7px;
+
+    color: #111111;
+
+    font-size: 16px;
+}
+
+.image-content p {
+    margin: 0 0 15px;
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+.upload-btn {
+    display: inline-flex;
+
+    padding: 10px 15px;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    transition: 0.25s ease;
+}
+
+.upload-btn:hover {
+    background: #ff6b00;
+}
+
+#profile_image {
+    display: none;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-grid .form-group {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #ff6b00;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 107, 0, 0.10);
+}
+
+.form-group input[readonly] {
+    background: #f7f7f7;
+
+    color: #777777;
+
+    cursor: not-allowed;
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #999999;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding: 5px 0 30px;
+}
+
+.cancel-btn,
+.save-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.cancel-btn {
+    background: #ffffff;
+
+    color: #111111;
+
+    border: 1px solid #dddddd;
+}
+
+.cancel-btn:hover {
+    border-color: #111111;
+}
+
+.save-btn {
+    background: #ff6b00;
+
+    color: #ffffff;
+
+    border: 1px solid #ff6b00;
+}
+
+.save-btn:hover {
+    background: #e85f00;
+
+    border-color: #e85f00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 25px 40px;
+
+    border-top: 1px solid #eeeeee;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+.footer-logo {
+    margin-bottom: 8px;
+
+    color: #111111;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.footer-logo span {
+    color: #ff6b00;
+}
+
+footer p {
+    margin: 0;
+
+    color: #888888;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .edit-profile-main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .edit-profile-container {
+        padding: 25px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .back-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .edit-profile-container {
+        padding: 18px 15px;
+    }
+
+    .form-section {
+        padding: 20px 17px;
+    }
+
+    .image-area {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-btn,
+    .save-btn {
+        width: 100%;
+    }
+
+    footer {
+        padding: 20px 15px;
+    }
+}

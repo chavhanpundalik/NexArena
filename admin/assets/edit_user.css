@@ -1,0 +1,702 @@
+/* =========================================
+   NEXARENA - EDIT USER PAGE
+   White + Black + Orange Theme
+========================================= */
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f7f7f7;
+
+    color: #171717;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.admin-main {
+    margin-left: 270px;
+
+    min-height: 100vh;
+
+    padding: 35px;
+}
+
+
+/* =========================================
+   EDIT PAGE
+========================================= */
+
+.edit-page {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    color: #555555;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.back-link:hover {
+    color: #f36b21;
+}
+
+
+/* =========================================
+   EDIT CARD
+========================================= */
+
+.edit-card {
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   EDIT HEADER
+========================================= */
+
+.edit-header {
+    padding: 28px 30px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.edit-header h1 {
+    color: #111111;
+
+    font-size: 25px;
+
+    margin-bottom: 7px;
+}
+
+.edit-header p {
+    color: #888888;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   EDIT BODY
+========================================= */
+
+.edit-body {
+    padding: 30px;
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.alert {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 16px;
+
+    border-radius: 9px;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+}
+
+
+/* SUCCESS */
+
+.alert-success {
+    background: #edf9f0;
+
+    border: 1px solid #ccebd3;
+
+    color: #28733a;
+}
+
+
+/* ERROR */
+
+.alert-error {
+    background: #fff0f0;
+
+    border: 1px solid #f0caca;
+
+    color: #b52d2d;
+}
+
+
+/* =========================================
+   FORM SECTION
+========================================= */
+
+.form-section {
+    margin-bottom: 32px;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.form-section h2 {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #222222;
+
+    font-size: 18px;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.form-section h2 i {
+    color: #f36b21;
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+/* FULL WIDTH */
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-group label {
+    color: #444444;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INPUT / SELECT / TEXTAREA
+========================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    padding: 12px 13px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.form-group input {
+    height: 44px;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+.form-group select {
+    height: 44px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.form-group textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #f36b21;
+
+    box-shadow:
+        0 0 0 3px rgba(243, 107, 33, 0.10);
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #aaaaaa;
+}
+
+
+/* =========================================
+   HELP TEXT
+========================================= */
+
+.form-help {
+    color: #999999;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   ROLE SELECT
+========================================= */
+
+.role-select {
+    position: relative;
+}
+
+.role-select select {
+    font-weight: 600;
+}
+
+
+/* =========================================
+   PROFILE IMAGE AREA
+========================================= */
+
+.profile-image-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+
+    padding: 18px;
+
+    background: #fafafa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 10px;
+}
+
+
+.profile-image {
+
+    width: 65px;
+
+    height: 65px;
+
+    min-width: 65px;
+
+    border-radius: 50%;
+
+    background: #fff1e8;
+
+    color: #f36b21;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    overflow: hidden;
+}
+
+
+.profile-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.profile-image-info h3 {
+
+    font-size: 14px;
+
+    color: #333333;
+
+    margin-bottom: 5px;
+}
+
+
+.profile-image-info p {
+
+    color: #999999;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PASSWORD NOTE
+========================================= */
+
+.password-note {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    margin-top: 18px;
+
+    background: #fff8f3;
+
+    border: 1px solid #ffd9c2;
+
+    border-radius: 9px;
+
+    color: #a84c16;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.password-note i {
+
+    color: #f36b21;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================
+   EDIT FOOTER
+========================================= */
+
+.edit-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 20px 30px;
+
+    border-top: 1px solid #eeeeee;
+
+    background: #ffffff;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.btn {
+
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+.btn-save {
+
+    background: #f36b21;
+
+    color: #ffffff;
+}
+
+.btn-save:hover {
+
+    background: #d95713;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   CANCEL
+========================================= */
+
+.btn-cancel {
+
+    background: #eeeeee;
+
+    color: #444444;
+}
+
+.btn-cancel:hover {
+
+    background: #dddddd;
+}
+
+
+/* =========================================
+   REQUIRED
+========================================= */
+
+.form-group input:required,
+.form-group select:required {
+
+    background-color: #ffffff;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .admin-main {
+
+        margin-left: 270px;
+
+        padding: 25px;
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .admin-main {
+
+        margin-left: 0;
+
+        padding: 20px;
+    }
+
+    .edit-header {
+
+        padding: 24px;
+    }
+
+    .edit-body {
+
+        padding: 24px;
+    }
+
+    .edit-footer {
+
+        padding: 18px 24px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .admin-main {
+
+        padding: 15px;
+    }
+
+    .edit-header {
+
+        padding: 20px;
+    }
+
+    .edit-header h1 {
+
+        font-size: 22px;
+    }
+
+    .edit-body {
+
+        padding: 20px;
+    }
+
+    .edit-footer {
+
+        padding: 16px 20px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .btn {
+
+        width: 100%;
+    }
+
+    .profile-image-section {
+
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,1104 @@
+/* =========================================================
+   NEXARENA ADMIN
+   REGISTRATIONS MANAGEMENT
+========================================================= */
+
+.page-heading {
+    margin-bottom: 22px;
+}
+
+.page-label {
+    color: #ff6500;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.page-heading h2 {
+    margin: 5px 0;
+    color: #111;
+    font-size: 28px;
+}
+
+.page-heading p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.registration-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.registration-stat {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.registration-stat-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 10px;
+    background: #fff3eb;
+    color: #ff6500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.registration-stat span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.registration-stat strong {
+    display: block;
+    color: #111;
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.registration-toolbar {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 18px;
+}
+
+.registration-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    flex: 1;
+    height: 43px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px;
+    background: #fff;
+}
+
+.search-box input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font-size: 13px;
+    color: #111;
+}
+
+.registration-search select {
+    height: 43px;
+    min-width: 140px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0 10px;
+    background: #fff;
+    color: #111;
+    outline: none;
+}
+
+.filter-btn,
+.clear-btn {
+    height: 43px;
+    border-radius: 8px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filter-btn {
+    border: 1px solid #ff6500;
+    background: #ff6500;
+    color: #fff;
+}
+
+.filter-btn:hover {
+    background: #e95700;
+}
+
+.clear-btn {
+    border: 1px solid #ddd;
+    color: #333;
+    background: #fff;
+}
+
+.clear-btn:hover {
+    border-color: #ff6500;
+    color: #ff6500;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.registration-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.registration-card-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.registration-card-header h3 {
+    margin: 0 0 4px;
+    color: #111;
+    font-size: 17px;
+}
+
+.registration-card-header p {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.registration-table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+}
+
+.registration-table th {
+    background: #fafafa;
+    color: #555;
+    font-size: 11px;
+    text-align: left;
+    padding: 13px 15px;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.registration-table td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.registration-table tbody tr:hover {
+    background: #fffaf6;
+}
+
+
+/* =========================================================
+   PARTICIPANT
+========================================================= */
+
+.participant {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.participant-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: #ff6500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.participant strong {
+    display: block;
+    color: #111;
+    font-size: 12px;
+}
+
+.participant span {
+    display: block;
+    color: #888;
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.event-name {
+    color: #111;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.status-pending {
+    background: #fff5df;
+    color: #a96a00;
+}
+
+.status-approved {
+    background: #e9f8ef;
+    color: #168044;
+}
+
+.status-rejected {
+    background: #ffeaea;
+    color: #d22b2b;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.registration-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.registration-actions form {
+    margin: 0;
+}
+
+.approve-btn,
+.reject-btn {
+    border: 0;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.approve-btn {
+    background: #e9f8ef;
+    color: #168044;
+}
+
+.approve-btn:hover {
+    background: #168044;
+    color: #fff;
+}
+
+.reject-btn {
+    background: #ffeaea;
+    color: #d22b2b;
+}
+
+.reject-btn:hover {
+    background: #d22b2b;
+    color: #fff;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.no-registrations {
+    text-align: center !important;
+    padding: 70px 20px !important;
+}
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+    margin: auto;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.no-registrations h3 {
+    margin: 12px 0 5px;
+    color: #111;
+    font-size: 15px;
+}
+
+.no-registrations p {
+    margin: 0;
+    color: #999;
+    font-size: 11px;
+}
+/* =========================================================
+   NEXARENA REGISTRATIONS
+   ACCURATE RESPONSIVE SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   DESKTOP
+   SIDEBAR = 235px
+========================================================= */
+
+@media (min-width: 1001px) {
+
+    .main-content {
+        margin-left: 235px;
+        width: calc(100% - 235px);
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .registration-stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   701px - 1000px
+========================================================= */
+
+@media (min-width: 701px) and (max-width: 1000px) {
+
+    .main-content {
+        margin-left: 235px;
+        width: calc(100% - 235px);
+        padding: 24px;
+        box-sizing: border-box;
+    }
+
+    .registration-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .registration-search {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 150px;
+        gap: 10px;
+    }
+
+    .search-box {
+        min-width: 0;
+    }
+
+    .registration-search select {
+        width: 100%;
+        min-width: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   SIDEBAR = 54px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+    ===================================================== */
+
+    .main-content {
+
+        /* IMPORTANT:
+           Your mobile sidebar is approximately 54px */
+        margin-left: 54px;
+
+        width: calc(100% - 54px);
+
+        max-width: calc(100% - 54px);
+
+        padding: 16px;
+
+        box-sizing: border-box;
+
+        overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       PAGE HEADING
+    ===================================================== */
+
+    .page-heading {
+        width: 100%;
+        margin-bottom: 18px;
+    }
+
+    .page-label {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+
+    .page-heading h2 {
+
+        font-size: 21px;
+
+        line-height: 1.25;
+
+        margin: 5px 0;
+    }
+
+    .page-heading p {
+
+        font-size: 11px;
+
+        line-height: 1.5;
+
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       STATISTICS
+    ===================================================== */
+
+    .registration-stats {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+
+        margin-bottom: 16px;
+
+        box-sizing: border-box;
+    }
+
+    .registration-stat {
+
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 11px;
+
+        gap: 8px;
+
+        box-sizing: border-box;
+
+        border-radius: 10px;
+    }
+
+    .registration-stat-icon {
+
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+
+        font-size: 15px;
+
+        border-radius: 8px;
+    }
+
+    .registration-stat span {
+
+        font-size: 8px;
+
+        line-height: 1.3;
+
+        white-space: normal;
+    }
+
+    .registration-stat strong {
+
+        font-size: 18px;
+
+        line-height: 1.2;
+    }
+
+
+    /* =====================================================
+       TOOLBAR
+    ===================================================== */
+
+    .registration-toolbar {
+
+        width: 100%;
+
+        padding: 11px;
+
+        margin-bottom: 15px;
+
+        box-sizing: border-box;
+
+        border-radius: 10px;
+    }
+
+    .registration-search {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 9px;
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+
+        width: 100%;
+
+        height: 43px;
+
+        min-width: 0;
+
+        flex: none;
+
+        box-sizing: border-box;
+
+        overflow: hidden;
+    }
+
+    .search-box span {
+
+        flex-shrink: 0;
+
+        font-size: 14px;
+    }
+
+    .search-box input {
+
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 12px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* SELECT */
+
+    .registration-search select {
+
+        width: 100%;
+
+        min-width: 0;
+
+        height: 43px;
+
+        box-sizing: border-box;
+
+        font-size: 12px;
+    }
+
+
+    /* BUTTONS */
+
+    .filter-btn,
+    .clear-btn {
+
+        width: 100%;
+
+        height: 43px;
+
+        min-height: 43px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =====================================================
+       REGISTRATION CARD
+    ===================================================== */
+
+    .registration-card {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        border-radius: 9px;
+
+        overflow: hidden;
+    }
+
+    .registration-card-header {
+
+        padding: 13px;
+
+        box-sizing: border-box;
+    }
+
+    .registration-card-header h3 {
+
+        font-size: 15px;
+
+        line-height: 1.3;
+    }
+
+    .registration-card-header p {
+
+        font-size: 10px;
+
+        line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       TABLE
+    ===================================================== */
+
+    .table-wrapper {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        box-sizing: border-box;
+    }
+
+    .registration-table {
+
+        width: 100%;
+
+        /*
+         Table stays readable.
+         ONLY the table scrolls horizontally.
+        */
+
+        min-width: 780px;
+
+        border-collapse: collapse;
+    }
+
+    .registration-table th {
+
+        padding: 11px;
+
+        font-size: 10px;
+
+        white-space: nowrap;
+    }
+
+    .registration-table td {
+
+        padding: 11px;
+
+        font-size: 10px;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       PARTICIPANT
+    ===================================================== */
+
+    .participant {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+    }
+
+    .participant-avatar {
+
+        width: 32px;
+        height: 32px;
+
+        min-width: 32px;
+
+        font-size: 11px;
+    }
+
+    .participant strong {
+
+        font-size: 11px;
+    }
+
+    .participant span {
+
+        font-size: 9px;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .status-badge {
+
+        padding: 5px 8px;
+
+        font-size: 9px;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       ACTION BUTTONS
+    ===================================================== */
+
+    .registration-actions {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        white-space: nowrap;
+    }
+
+    .approve-btn,
+    .reject-btn {
+
+        padding: 7px 9px;
+
+        font-size: 9px;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       EMPTY STATE
+    ===================================================== */
+
+    .no-registrations {
+
+        padding: 50px 15px !important;
+
+        box-sizing: border-box;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   501px - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .main-content {
+
+        margin-left: 54px;
+
+        width: calc(100% - 54px);
+
+        max-width: calc(100% - 54px);
+
+        padding: 14px;
+    }
+
+    .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .registration-stats {
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   401px - 500px
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .main-content {
+
+        margin-left: 54px;
+
+        width: calc(100% - 54px);
+
+        max-width: calc(100% - 54px);
+
+        padding: 12px;
+    }
+
+    .registration-stat {
+
+        padding: 10px;
+
+        gap: 7px;
+    }
+
+    .registration-stat-icon {
+
+        width: 32px;
+        height: 32px;
+
+        min-width: 32px;
+
+        font-size: 14px;
+    }
+
+    .registration-stat strong {
+        font-size: 17px;
+    }
+
+    .registration-stat span {
+        font-size: 8px;
+    }
+
+    .registration-toolbar {
+        padding: 10px;
+    }
+
+    .registration-table {
+        min-width: 760px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   400px AND BELOW
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .main-content {
+
+        margin-left: 54px;
+
+        width: calc(100% - 54px);
+
+        max-width: calc(100% - 54px);
+
+        padding: 10px;
+    }
+
+    .page-heading h2 {
+        font-size: 18px;
+    }
+
+    .page-heading p {
+        font-size: 10px;
+    }
+
+    .registration-stats {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 7px;
+    }
+
+    .registration-stat {
+
+        padding: 9px;
+
+        min-height: 60px;
+    }
+
+    .registration-stat strong {
+        font-size: 16px;
+    }
+
+    .registration-stat span {
+        font-size: 7px;
+    }
+
+    .registration-toolbar {
+        padding: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY NARROW PHONES
+   360px AND BELOW
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .main-content {
+
+        margin-left: 54px;
+
+        width: calc(100% - 54px);
+
+        max-width: calc(100% - 54px);
+
+        padding: 8px;
+    }
+
+    .page-heading h2 {
+        font-size: 17px;
+    }
+
+    .registration-stats {
+        gap: 6px;
+    }
+
+    .registration-stat {
+        padding: 8px;
+    }
+
+    .registration-stat-icon {
+
+        width: 29px;
+        height: 29px;
+
+        min-width: 29px;
+
+        font-size: 12px;
+    }
+
+    .registration-stat strong {
+        font-size: 15px;
+    }
+
+    .registration-stat span {
+        font-size: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH SCREEN
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .filter-btn,
+    .clear-btn,
+    .approve-btn,
+    .reject-btn {
+
+        min-height: 40px;
+    }
+
+    .search-box,
+    .registration-search select {
+
+        min-height: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+========================================================= */
+
+.table-wrapper::-webkit-scrollbar {
+    height: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+
+    background: #ff6500;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   FINAL OVERFLOW PROTECTION
+========================================================= */
+
+.registration-stats,
+.registration-toolbar,
+.registration-card,
+.page-heading {
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+}

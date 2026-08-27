@@ -1,0 +1,1033 @@
+/* =========================================================
+   NEXARENA EVENTS MANAGEMENT
+   WHITE + BLACK + ORANGE
+   SIDEBAR SPACE: 270px
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f8f8f8;
+
+    color: #111111;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    margin-left: 270px;
+
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    padding: 35px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 28px;
+}
+
+
+.page-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ff6600;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+.page-header h1 {
+
+    color: #111111;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.page-header p {
+
+    margin-top: 7px;
+
+    color: #777777;
+
+    font-size: 14px;
+
+    line-height: 20px;
+}
+
+
+/* =========================================================
+   ADD EVENT BUTTON
+========================================================= */
+
+.add-event-btn {
+
+    min-height: 44px;
+
+    padding: 0 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    background: #ff6600;
+
+    color: #ffffff;
+
+    border: 1px solid #ff6600;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.add-event-btn:hover {
+
+    background: #e85d00;
+
+    border-color: #e85d00;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.alert {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 13px 16px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.alert.success {
+
+    background: #effaf3;
+
+    color: #237a3b;
+
+    border: 1px solid #ccebd5;
+}
+
+
+.alert.error {
+
+    background: #fff1f1;
+
+    color: #c62828;
+
+    border: 1px solid #ffd2d2;
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.filter-bar {
+
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    padding: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+
+    height: 42px;
+
+    flex: 1;
+
+    min-width: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 13px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 7px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.search-box:focus-within {
+
+    border-color: #ff6600;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 102, 0, 0.08);
+}
+
+
+.search-box span {
+
+    color: #888888;
+
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+
+.search-box input::placeholder {
+
+    color: #999999;
+}
+
+
+/* =========================================================
+   FILTER SELECT
+========================================================= */
+
+.filter-bar select {
+
+    width: 180px;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.filter-bar select:focus {
+
+    border-color: #ff6600;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 102, 0, 0.08);
+}
+
+
+/* =========================================================
+   EVENTS LIST
+========================================================= */
+
+.events-list {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   EVENT CARD
+========================================================= */
+
+.event-card {
+
+    width: 100%;
+
+    min-height: 150px;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.event-card:hover {
+
+    border-color: #ffb180;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.07);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EVENT DATE
+========================================================= */
+
+.event-date-box {
+
+    width: 76px;
+
+    min-width: 76px;
+
+    height: 92px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff5ef;
+
+    border: 1px solid #ffd9c5;
+
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+
+.event-date-box span {
+
+    color: #ff6600;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.event-date-box strong {
+
+    margin: 2px 0;
+
+    color: #111111;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+.event-date-box small {
+
+    color: #777777;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EVENT DETAILS
+========================================================= */
+
+.event-details {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   EVENT TOP
+========================================================= */
+
+.event-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   SPORT LABEL
+========================================================= */
+
+.sport-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 25px;
+
+    padding: 0 9px;
+
+    background: #fff3eb;
+
+    color: #ff6600;
+
+    border: 1px solid #ffd8c2;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.status-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 25px;
+
+    padding: 0 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+}
+
+
+/* Upcoming */
+
+.status-badge.upcoming {
+
+    background: #fff3eb;
+
+    color: #ff6600;
+
+    border: 1px solid #ffd8c2;
+}
+
+
+/* Ongoing */
+
+.status-badge.ongoing {
+
+    background: #edf8f1;
+
+    color: #248a48;
+
+    border: 1px solid #ccebd6;
+}
+
+
+/* Completed */
+
+.status-badge.completed {
+
+    background: #f1f1f1;
+
+    color: #555555;
+
+    border: 1px solid #dddddd;
+}
+
+
+/* Cancelled */
+
+.status-badge.cancelled {
+
+    background: #fff0f0;
+
+    color: #c62828;
+
+    border: 1px solid #ffd0d0;
+}
+
+
+/* =========================================================
+   EVENT TITLE
+========================================================= */
+
+.event-details h2 {
+
+    margin-bottom: 6px;
+
+    color: #111111;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 24px;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   EVENT DESCRIPTION
+========================================================= */
+
+.event-details p {
+
+    max-width: 850px;
+
+    margin-bottom: 11px;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    line-height: 18px;
+}
+
+
+/* =========================================================
+   EVENT META
+========================================================= */
+
+.event-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #666666;
+
+    font-size: 11px;
+
+    line-height: 17px;
+}
+
+
+.event-meta span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+/* =========================================================
+   EVENT ACTIONS
+========================================================= */
+
+.event-actions {
+
+    min-width: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.edit-btn,
+.delete-btn {
+
+    min-height: 36px;
+
+    padding: 0 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+
+.edit-btn {
+
+    background: #ffffff;
+
+    color: #111111;
+
+    border: 1px solid #dddddd;
+}
+
+
+.edit-btn:hover {
+
+    color: #ff6600;
+
+    border-color: #ff6600;
+
+    background: #fff8f4;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.delete-btn {
+
+    background: #ffffff;
+
+    color: #c62828;
+
+    border: 1px solid #eeeeee;
+}
+
+
+.delete-btn:hover {
+
+    background: #fff1f1;
+
+    border-color: #ffcaca;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+
+    width: 100%;
+
+    min-height: 300px;
+
+    padding: 40px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 11px;
+
+    text-align: center;
+}
+
+
+.empty-state > div {
+
+    width: 58px;
+
+    height: 58px;
+
+    margin-bottom: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff3eb;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+
+.empty-state h2 {
+
+    margin-bottom: 7px;
+
+    color: #111111;
+
+    font-size: 18px;
+}
+
+
+.empty-state p {
+
+    margin-bottom: 17px;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+.empty-state a {
+
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ff6600;
+
+    color: #ffffff;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.empty-state a:hover {
+
+    background: #e85d00;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .main-content {
+
+        margin-left: 235px;
+
+        width: calc(100% - 235px);
+
+        padding: 25px;
+    }
+
+
+    .filter-bar {
+
+        flex-wrap: wrap;
+    }
+
+
+    .search-box {
+
+        flex-basis: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .main-content {
+
+        margin-left: 72px;
+
+        width: calc(100% - 72px);
+
+        padding: 20px;
+    }
+
+
+    .page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .add-event-btn {
+
+        width: 100%;
+    }
+
+
+    .filter-bar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .search-box {
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .filter-bar select {
+
+        width: 100%;
+    }
+
+
+    .event-card {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 16px;
+    }
+
+
+    .event-date-box {
+
+        width: 100%;
+
+        height: 65px;
+
+        flex-direction: row;
+
+        gap: 7px;
+    }
+
+
+    .event-date-box strong {
+
+        font-size: 23px;
+    }
+
+
+    .event-top {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .event-actions {
+
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+
+    .edit-btn,
+    .delete-btn {
+
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .main-content {
+
+        margin-left: 64px;
+
+        width: calc(100% - 64px);
+
+        padding: 15px;
+    }
+
+
+    .page-header h1 {
+
+        font-size: 27px;
+    }
+
+
+    .event-details h2 {
+
+        font-size: 16px;
+    }
+
+}

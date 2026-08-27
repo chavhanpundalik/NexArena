@@ -1,0 +1,635 @@
+/* ============================================================
+   NEXARENA SUPER ADMIN SIDEBAR
+   Orange Labels | Orange Hover | Orange Accents
+============================================================ */
+
+:root {
+    --sidebar-bg: #ffffff;
+    --sidebar-text: #1f2937;
+    --sidebar-text-secondary: #4b5563;
+    --sidebar-text-muted: #9ca3af;
+    --sidebar-border: #e5e7eb;
+    --sidebar-hover: #fff7ed;
+    --sidebar-active: #fff7ed;
+    --sidebar-active-border: #f97316;
+    --primary-orange: #f97316;
+    --primary-orange-dark: #ea580c;
+    --primary-orange-light: #fb923c;
+    --primary-orange-lightest: #fff7ed;
+    --orange-gradient: linear-gradient(135deg, #f97316, #fb923c);
+    --shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --radius: 14px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   SIDEBAR CONTAINER
+============================================================ */
+
+.super-sidebar {
+    width: 290px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid var(--sidebar-border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* ============================================================
+   SCROLLBAR STYLING - ORANGE
+============================================================ */
+
+.super-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.super-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.super-sidebar::-webkit-scrollbar-thumb {
+    background: var(--primary-orange);
+    border-radius: 6px;
+}
+
+.super-sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-orange-dark);
+}
+
+/* ============================================================
+   BRAND / LOGO - ORANGE
+============================================================ */
+
+.sidebar-brand {
+    padding: 28px 24px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid var(--sidebar-border);
+}
+
+.brand-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--orange-gradient);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+}
+
+.brand-text {
+    flex: 1;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--sidebar-text);
+    letter-spacing: -0.5px;
+}
+
+.brand-name-highlight {
+    color: var(--primary-orange);
+}
+
+.brand-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--orange-gradient);
+    padding: 3px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 3px;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.brand-badge i {
+    margin-right: 4px;
+}
+
+/* ============================================================
+   USER PROFILE - ORANGE ACCENTS
+============================================================ */
+
+.sidebar-user {
+    padding: 24px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid var(--sidebar-border);
+    background: #fafafa;
+}
+
+.user-avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.user-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--orange-gradient);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    box-shadow: 0 2px 12px rgba(249, 115, 22, 0.3);
+}
+
+.online-status {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2.5px solid #fff;
+    display: block;
+}
+
+.online-status i {
+    font-size: 10px;
+    color: #22c55e;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--sidebar-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-info small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--primary-orange);
+    font-weight: 600;
+}
+
+.user-info small i {
+    font-style: normal;
+    font-size: 9px;
+    color: var(--primary-orange);
+}
+
+/* ============================================================
+   STATISTICS - ORANGE ACCENTS
+============================================================ */
+
+.sidebar-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 16px;
+    background: #fafafa;
+    border-bottom: 2px solid var(--sidebar-border);
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--primary-orange);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--sidebar-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 3px;
+}
+
+.stat-label i {
+    color: var(--primary-orange);
+    margin-right: 3px;
+}
+
+.stat-divider {
+    width: 1.5px;
+    height: 36px;
+    background: var(--sidebar-border);
+}
+
+/* ============================================================
+   NAVIGATION - ORANGE HOVER & ACTIVE
+============================================================ */
+
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 14px 20px;
+    overflow-y: auto;
+}
+
+.nav-section {
+    margin-bottom: 24px;
+}
+
+.nav-section:last-child {
+    margin-bottom: 0;
+}
+
+.nav-section-title {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--sidebar-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 14px;
+    margin-bottom: 10px;
+}
+
+.nav-section-title i {
+    color: var(--primary-orange);
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+/* ---- NAV ITEMS ---- */
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    margin-bottom: 3px;
+}
+
+/* ORANGE HOVER EFFECT */
+.nav-item:hover {
+    background: var(--sidebar-hover);
+    color: var(--primary-orange);
+    transform: translateX(4px);
+}
+
+.nav-item:hover .nav-icon i {
+    color: var(--primary-orange);
+}
+
+.nav-item:hover .nav-count {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+/* ORANGE ACTIVE STATE */
+.nav-item.active {
+    background: var(--sidebar-active);
+    color: var(--primary-orange);
+    font-weight: 700;
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 32px;
+    background: var(--primary-orange);
+    border-radius: 0 5px 5px 0;
+}
+
+.nav-item.active .nav-icon i {
+    color: var(--primary-orange);
+}
+
+.nav-item.active .nav-count {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+.nav-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+}
+
+.nav-icon i {
+    color: var(--sidebar-text-secondary);
+    transition: var(--transition);
+}
+
+.nav-item.active .nav-icon i {
+    color: var(--primary-orange);
+}
+
+.nav-text {
+    flex: 1;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---- BADGES & COUNTS - ORANGE ---- */
+
+.nav-count {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--sidebar-text-secondary);
+    background: var(--sidebar-border);
+    padding: 2px 12px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.nav-item.active .nav-count {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+/* ORANGE BADGE */
+.nav-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--orange-gradient);
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    animation: pulse-badge 2s infinite;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.nav-badge i {
+    margin-right: 2px;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(0.95); }
+}
+
+/* ORANGE NOTIFICATION DOT */
+.notification-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary-orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.5);
+}
+
+.notification-dot.pulse {
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 0.6;
+    }
+}
+
+/* ============================================================
+   SIDEBAR FOOTER - ORANGE ACCENTS
+============================================================ */
+
+.sidebar-footer {
+    padding: 18px 20px 22px;
+    border-top: 2px solid var(--sidebar-border);
+    background: #fafafa;
+    margin-top: auto;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 14px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sidebar-text);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-indicator.online .status-dot {
+    background: #22c55e;
+    animation: pulse-dot 2s infinite;
+}
+
+.status-indicator i {
+    color: var(--primary-orange);
+}
+
+.status-version {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sidebar-text-secondary);
+    background: var(--sidebar-border);
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+
+.status-version i {
+    color: var(--primary-orange);
+    margin-right: 4px;
+}
+
+/* ---- LOGOUT BUTTON - ORANGE HOVER ---- */
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--transition);
+    background: #fff;
+    border: 1.5px solid var(--sidebar-border);
+}
+
+.logout-btn:hover {
+    background: #fff7ed;
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.15);
+}
+
+.logout-btn i {
+    font-style: normal;
+    font-size: 20px;
+    color: var(--sidebar-text-secondary);
+    transition: var(--transition);
+}
+
+.logout-btn:hover i {
+    color: var(--primary-orange);
+}
+
+.logout-shortcut {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--sidebar-text-muted);
+    background: var(--sidebar-border);
+    padding: 2px 10px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: monospace;
+    transition: var(--transition);
+}
+
+.logout-btn:hover .logout-shortcut {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 768px) {
+    .super-sidebar {
+        transform: translateX(-100%);
+        width: 290px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .super-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        padding: 16px !important;
+    }
+}
+
+/* ============================================================
+   MOBILE TOGGLE - ORANGE HOVER
+============================================================ */
+
+.sidebar-toggle-btn {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1001;
+    background: #fff;
+    border: 1.5px solid var(--sidebar-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    color: var(--sidebar-text);
+}
+
+.sidebar-toggle-btn:hover {
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.15);
+}
+
+.sidebar-toggle-btn i {
+    font-size: 22px;
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle-btn {
+        display: block;
+    }
+}
+
+/* ============================================================
+   OVERLAY FOR MOBILE
+============================================================ */
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(6px);
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .sidebar-overlay {
+        display: none !important;
+    }
+}

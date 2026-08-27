@@ -1,0 +1,80 @@
+/* =========================================================
+   LEADERBOARD MANAGEMENT
+========================================================= */
+
+/* --- Rank number --- */
+.rank-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 14px;
+    background: #f3f4f6;
+    color: #6b7280;
+}
+.rank-number.top {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.3);
+}
+.rank-number.top:first-child {
+    background: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+}
+.rank-number.top:nth-child(2) {
+    background: #9ca3af;
+}
+.rank-number.top:nth-child(3) {
+    background: #cd7f32;
+}
+
+/* --- Stats in table --- */
+.stat-win {
+    color: #059669;
+    font-weight: 700;
+}
+.stat-loss {
+    color: #dc2626;
+    font-weight: 700;
+}
+.stat-draw {
+    color: #d97706;
+    font-weight: 700;
+}
+
+/* --- Points badge --- */
+.points-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 16px;
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(249,115,22,0.3);
+}
+.points-badge.top1 {
+    background: #f59e0b;
+}
+.points-badge.top2 {
+    background: #9ca3af;
+}
+.points-badge.top3 {
+    background: #cd7f32;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .rank-number {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    .points-badge {
+        font-size: 13px;
+        padding: 2px 10px;
+    }
+}

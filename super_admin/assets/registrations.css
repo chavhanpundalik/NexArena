@@ -1,0 +1,167 @@
+/* =========================================================
+   REGISTRATIONS MANAGEMENT
+========================================================= */
+
+/* --- Status badges --- */
+.reg-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.reg-status.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+.reg-status.approved {
+    background: #d1fae5;
+    color: #059669;
+}
+.reg-status.rejected {
+    background: #fecaca;
+    color: #dc2626;
+}
+.reg-status.cancelled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* --- Payment status --- */
+.payment-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.payment-status.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+.payment-status.paid {
+    background: #d1fae5;
+    color: #059669;
+}
+.payment-status.failed {
+    background: #fecaca;
+    color: #dc2626;
+}
+.payment-status.refunded {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* --- Detail card --- */
+.detail-card {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    max-width: 800px;
+    margin: 0 auto;
+}
+.detail-section {
+    margin-bottom: 28px;
+}
+.detail-section h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #1f2937;
+}
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.detail-table tr {
+    border-bottom: 1px solid #f3f4f6;
+}
+.detail-table th,
+.detail-table td {
+    padding: 12px 8px;
+    text-align: left;
+}
+.detail-table th {
+    font-weight: 600;
+    color: #6b7280;
+    width: 140px;
+}
+.detail-table td {
+    color: #1f2937;
+}
+.detail-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+.btn-primary {
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s;
+    box-shadow: 0 7px 18px rgba(249,115,22,0.25);
+}
+.btn-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+.btn-danger {
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s;
+}
+.btn-danger:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background: #f4f4f5;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s;
+}
+.btn-secondary:hover {
+    background: #e4e4e7;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .detail-table th {
+        width: 100px;
+    }
+    .detail-card {
+        padding: 20px;
+    }
+}

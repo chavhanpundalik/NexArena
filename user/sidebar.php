@@ -18,6 +18,7 @@ if (isset($_SESSION['user_id'])) {
         $pending_stmt->close();
     }
 }
+
 // Get dark mode setting for sidebar
 $dark_mode_sidebar = 0;
 if (isset($_SESSION['user_id'])) {
@@ -35,16 +36,13 @@ if (isset($_SESSION['user_id'])) {
         $settings_stmt_sidebar->close();
     }
 }
-$dark_mode_sidebar_class = ($dark_mode_sidebar == 1) ? 'dark-mode' : '';
+
+// Set data-theme for the html tag
+$data_theme = $dark_mode_sidebar ? 'dark' : 'light';
 ?>
 
-<!-- Update the sidebar container to include dark mode class -->
-<div class="sidebar <?php echo $dark_mode_sidebar_class; ?>">
-    <!-- ... rest of sidebar content ... -->
-</div>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="<?php echo $data_theme; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,10 +61,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 <aside class="sidebar">
 
-    <!-- LOGO - Only Image -->
+    <!-- LOGO - Text Only (Theme Based) -->
     <div class="sidebar-logo">
-        <div class="logo-mark">
-            <img src="../assets/images/logo.png" alt="NexArena" class="logo-image">
+        <div class="logo-text">
+            <span class="nex">Nex</span><span class="arena">Arena</span>
         </div>
     </div>
 
@@ -119,15 +117,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         <!-- REGISTRATIONS -->
         <a href="my_registration.php" class="menu-item <?php echo $current_page === 'my_registration.php' ? 'active' : ''; ?>">
-    <span class="menu-icon"><i class="fas fa-clipboard-list"></i></span>
-    <span>My Registration</span>
-    <?php 
-    // Show notification dot if there are pending registrations
-    if (isset($pending_registrations_count) && $pending_registrations_count > 0): 
-    ?>
-        <span class="notification-dot"></span>
-    <?php endif; ?>
-</a>
+            <span class="menu-icon"><i class="fas fa-clipboard-list"></i></span>
+            <span>My Registration</span>
+            <?php 
+            // Show notification dot if there are pending registrations
+            if (isset($pending_registrations_count) && $pending_registrations_count > 0): 
+            ?>
+                <span class="notification-dot"></span>
+            <?php endif; ?>
+        </a>
 
         <p class="menu-title second">TEAM MANAGEMENT</p>
 

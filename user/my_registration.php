@@ -12,17 +12,27 @@ $user_id = (int) $_SESSION['user_id'];
 
 // Get dark mode setting
 $dark_mode = 0;
-$settings_sql = "SELECT dark_mode FROM user_settings WHERE user_id = ?";
-$settings_stmt = $conn->prepare($settings_sql);
-$settings_stmt->bind_param("i", $user_id);
-$settings_stmt->execute();
-$settings_result = $settings_stmt->get_result();
 
-if ($settings_result->num_rows > 0) {
-    $settings_data = $settings_result->fetch_assoc();
-    $dark_mode = $settings_data['dark_mode'] ?? 0;
+// Check if user_settings table exists
+$table_check = $conn->query("SHOW TABLES LIKE 'user_settings'");
+$table_exists = ($table_check && $table_check->num_rows > 0);
+
+if ($table_exists) {
+    $settings_sql = "SELECT dark_mode FROM user_settings WHERE user_id = ?";
+    $settings_stmt = $conn->prepare($settings_sql);
+    
+    if ($settings_stmt) {
+        $settings_stmt->bind_param("i", $user_id);
+        $settings_stmt->execute();
+        $settings_result = $settings_stmt->get_result();
+        
+        if ($settings_result->num_rows > 0) {
+            $settings_data = $settings_result->fetch_assoc();
+            $dark_mode = $settings_data['dark_mode'] ?? 0;
+        }
+        $settings_stmt->close();
+    }
 }
-$settings_stmt->close();
 
 // Get user's registrations
 $sql = "
@@ -44,15 +54,21 @@ $sql = "
 ";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$registrations = [];
 
-while ($row = $result->fetch_assoc()) {
-    $registrations[] = $row;
+if ($stmt) {
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $registrations = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $registrations[] = $row;
+    }
+    $stmt->close();
+} else {
+    $registrations = [];
+    error_log("Registrations query failed: " . $conn->error);
 }
-$stmt->close();
 
 // Get statistics
 $totalRegistrations = count($registrations);
@@ -76,17 +92,17 @@ if (isset($_GET['cancel']) && isset($_GET['id'])) {
     $reg_id = (int)$_GET['id'];
     $cancel_sql = "UPDATE registrations SET status = 'cancelled' WHERE registration_id = ? AND user_id = ?";
     $cancel_stmt = $conn->prepare($cancel_sql);
-    $cancel_stmt->bind_param("ii", $reg_id, $user_id);
     
-    if ($cancel_stmt->execute()) {
-        header("Location: my_registration.php?cancelled=1");
-        exit();
+    if ($cancel_stmt) {
+        $cancel_stmt->bind_param("ii", $reg_id, $user_id);
+        
+        if ($cancel_stmt->execute()) {
+            header("Location: my_registration.php?cancelled=1");
+            exit();
+        }
+        $cancel_stmt->close();
     }
-    $cancel_stmt->close();
 }
-
-// Don't close connection - sidebar needs it
-// $conn->close();
 
 function clean($value) {
     return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
@@ -119,7 +135,16 @@ function getStatusBadge($status) {
     <link rel="stylesheet" href="assets/theme.css">
     <style>
         /* =========================================================
-           MY REGISTRATIONS PAGE - DARK MODE SUPPORT
+           RESET & BASE
+        ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =========================================================
+           CSS VARIABLES
         ========================================================= */
         :root {
             --orange: #f97316;
@@ -152,27 +177,38 @@ function getStatusBadge($status) {
             --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* =========================================================
+           BODY - 80px LEFT MARGIN FOR ALL SCREENS
+        ========================================================= */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg-primary) !important;
             color: var(--text-primary) !important;
             min-height: 100vh;
             transition: background 0.3s ease, color 0.3s ease;
+            padding-left: 80px;
         }
 
+        /* =========================================================
+           MAIN CONTENT WRAPPER
+        ========================================================= */
         .registrations-main {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 30px 24px 60px;
+            padding: 30px 30px 60px 30px;
+            width: 100%;
+            min-height: 100vh;
         }
 
-        /* Page Header */
+        @media (max-width: 768px) {
+            .registrations-main {
+                padding: 20px 16px 60px;
+            }
+        }
+
+        /* =========================================================
+           PAGE HEADER
+        ========================================================= */
         .page-header {
             display: flex;
             justify-content: space-between;
@@ -216,6 +252,7 @@ function getStatusBadge($status) {
             font-size: 14px;
             font-weight: 600;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .back-link:hover {
@@ -223,10 +260,27 @@ function getStatusBadge($status) {
             color: var(--orange);
         }
 
-        /* Stats Grid */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-header h1 {
+                font-size: 22px;
+            }
+
+            .back-link {
+                white-space: normal;
+            }
+        }
+
+        /* =========================================================
+           STATS GRID
+        ========================================================= */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             margin-bottom: 28px;
         }
@@ -265,7 +319,30 @@ function getStatusBadge($status) {
             margin-top: 2px;
         }
 
-        /* Alert */
+        @media (max-width: 992px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px 14px;
+            }
+
+            .stat-card .stat-number {
+                font-size: 22px;
+            }
+        }
+
+        /* =========================================================
+           ALERT
+        ========================================================= */
         .alert {
             padding: 12px 18px;
             border-radius: 8px;
@@ -281,7 +358,15 @@ function getStatusBadge($status) {
             color: #16a34a;
         }
 
-        /* Registrations Grid */
+        [data-theme="dark"] .alert-success {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #34d399;
+        }
+
+        /* =========================================================
+           REGISTRATIONS GRID
+        ========================================================= */
         .registrations-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -342,6 +427,9 @@ function getStatusBadge($status) {
             flex-wrap: wrap;
         }
 
+        /* =========================================================
+           STATUS BADGE
+        ========================================================= */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -392,6 +480,9 @@ function getStatusBadge($status) {
             color: #f87171;
         }
 
+        /* =========================================================
+           ACTION BUTTONS
+        ========================================================= */
         .action-buttons {
             display: flex;
             gap: 8px;
@@ -450,11 +541,16 @@ function getStatusBadge($status) {
             color: var(--orange);
         }
 
-        /* Empty State */
+        /* =========================================================
+           EMPTY STATE
+        ========================================================= */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
             color: var(--text-muted);
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
         }
 
         .empty-state i {
@@ -493,58 +589,119 @@ function getStatusBadge($status) {
             box-shadow: 0 4px 12px var(--orange-shadow);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .registrations-main {
-                padding: 20px 16px;
-            }
-
-            .page-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .page-header h1 {
-                font-size: 22px;
+        /* =========================================================
+           RESPONSIVE - TABLETS & MOBILE
+        ========================================================= */
+        @media (max-width: 1024px) {
+            .registration-card {
+                padding: 16px 20px;
             }
 
             .stats-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-left: 80px; /* Keep 80px on mobile too */
             }
 
             .registration-card {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 16px;
             }
 
-            .registration-card .event-status-info {
+            .registration-card .event-info {
                 width: 100%;
-                justify-content: space-between;
+                min-width: unset;
             }
 
-            .action-buttons {
-                width: 100%;
-                justify-content: flex-end;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .registration-card .event-info .event-name {
+                font-size: 16px;
             }
 
-            .registration-card .event-meta {
+            .registration-card .event-info .event-meta {
                 flex-direction: column;
                 gap: 6px;
             }
 
+            .registration-card .event-status-info {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: space-between;
+            }
+
+            .action-buttons {
+                flex: 1;
+                justify-content: flex-end;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .stat-card .stat-number {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-left: 80px; /* Keep 80px on mobile too */
+            }
+
+            .registrations-main {
+                padding: 16px 12px 60px 12px;
+            }
+
+            .registration-card {
+                padding: 14px;
+            }
+
+            .registration-card .event-info .event-meta {
+                font-size: 12px;
+            }
+
             .action-buttons {
                 flex-direction: column;
                 width: 100%;
+                gap: 6px;
             }
 
             .action-btn {
                 justify-content: center;
+                width: 100%;
+                padding: 8px 14px;
+            }
+
+            .status-badge {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+
+            .registered-date {
+                font-size: 11px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 10px 12px;
+            }
+
+            .stat-card .stat-number {
+                font-size: 20px;
+            }
+
+            .stat-card .stat-label {
+                font-size: 10px;
             }
         }
     </style>
@@ -553,9 +710,9 @@ function getStatusBadge($status) {
 
 <?php include "sidebar.php"; ?>
 
-<!-- ======================================================
+<!-- =========================================================
      MAIN CONTENT
-====================================================== -->
+========================================================= -->
 
 <main class="registrations-main">
 
@@ -563,7 +720,7 @@ function getStatusBadge($status) {
     <div class="page-header">
         <div>
             <h1><i class="fas fa-clipboard-list"></i> My Registrations</h1>
-            <p>View and manage all your event registrations</p>
+            <p>Manage all your event registrations</p>
         </div>
         <a href="events.php" class="back-link">
             <i class="fas fa-calendar-alt"></i> Browse Events

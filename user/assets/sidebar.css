@@ -17,7 +17,7 @@
 }
 
 /* =========================================================
-   VARIABLES
+   VARIABLES - UNIFIED ORANGE
 ========================================================= */
 :root {
     --sidebar-width: 280px;
@@ -26,15 +26,37 @@
     --black-hover: #fff4ee;
     --white: #1a1a2e;
     --white-soft: #6b7280;
-    --orange: #ff6b35;
-    --orange-hover: #e55a2b;
-    --orange-light: #fff0e8;
+    
+    /* UNIFIED ORANGE */
+    --orange: #f97316;
+    --orange-hover: #ea580c;
+    --orange-light: #fff7ed;
+    --orange-border: #fed7aa;
+    --orange-shadow: rgba(249, 115, 22, 0.25);
+    --orange-gradient: linear-gradient(135deg, #f97316, #fb923c);
+    --orange-gradient-dark: linear-gradient(135deg, #ea580c, #f97316);
+    
     --border: #eef0f4;
     --shadow: rgba(0, 0, 0, 0.06);
-    --gradient-orange: linear-gradient(135deg, #ff6b35, #ff8a5c);
-    --gradient-orange-dark: linear-gradient(135deg, #e55a2b, #ff6b35);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================================
+   DARK MODE OVERRIDES
+========================================================= */
+[data-theme="dark"] {
+    --black: #1a1a2e;
+    --black-soft: #16213e;
+    --black-hover: #2a2a4a;
+    --white: #e5e5e5;
+    --white-soft: #999999;
+    --border: #2d2d44;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --orange: #f97316;
+    --orange-hover: #fb923c;
+    --orange-light: #2a1a0a;
+    --orange-border: #4a2a0a;
 }
 
 /* =========================================================
@@ -60,20 +82,21 @@
 }
 
 /* =========================================================
-   LOGO AREA - Only Image
+   LOGO AREA - TEXT LOGO ONLY
 ========================================================= */
 
 .sidebar-logo {
     width: 100%;
-    height: 84px;
+    height: 100px;
     padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
-    background: linear-gradient(135deg, #ffffff, #fafbfc);
+    background: var(--black);
     position: relative;
+    transition: background 0.3s ease;
 }
 
 .sidebar-logo::after {
@@ -83,38 +106,43 @@
     left: 20px;
     right: 20px;
     height: 2px;
-    background: var(--gradient-orange);
+    background: var(--orange-gradient);
     border-radius: 2px;
 }
 
-/* Logo image */
-.logo-mark {
-    width: 120px;
-    height: 90px;
+/* Text Logo */
+.logo-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: transparent;
-    border-radius: 14px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    gap: 2px;
+    transition: color 0.3s ease;
 }
 
-.logo-mark:hover {
-    transform: scale(1.05) rotate(-3deg);
+.logo-text .nex {
+    color: #1a1a2e;
+    transition: color 0.3s ease;
 }
 
-.logo-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 14px;
+.logo-text .arena {
+    color: var(--orange);
+    transition: color 0.3s ease;
 }
 
-/* Remove logo text completely */
-.logo-text {
-    display: none;
+/* Dark Mode Logo Colors */
+[data-theme="dark"] .sidebar-logo {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+[data-theme="dark"] .logo-text .nex {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .logo-text .arena {
+    color: var(--orange);
 }
 
 /* =========================================================
@@ -128,11 +156,11 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--gradient-orange);
+    background: var(--orange-gradient);
     border: none;
     border-radius: 16px;
     flex-shrink: 0;
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 20px var(--orange-shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -165,7 +193,7 @@
 
 .sidebar-user:hover {
     transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 8px 30px var(--orange-shadow);
 }
 
 .sidebar-user:active {
@@ -317,17 +345,17 @@
 
 /* Active menu */
 .menu-item.active {
-    background: var(--gradient-orange);
+    background: var(--orange-gradient);
     color: #ffffff;
     border-color: var(--orange);
     font-weight: 600;
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+    box-shadow: 0 4px 20px var(--orange-shadow);
 }
 
 .menu-item.active:hover {
-    background: var(--gradient-orange-dark);
+    background: var(--orange-gradient-dark);
     transform: translateX(0);
-    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.35);
+    box-shadow: 0 6px 25px var(--orange-shadow);
 }
 
 .menu-item.active .menu-icon {
@@ -379,7 +407,7 @@
     margin-left: auto;
     background: var(--orange);
     border-radius: 50%;
-    box-shadow: 0 0 16px rgba(255, 107, 53, 0.5);
+    box-shadow: 0 0 16px var(--orange-shadow);
     animation: pulse-dot 2s infinite;
 }
 
@@ -403,7 +431,7 @@
     padding: 14px 16px 18px;
     border-top: 1px solid var(--border);
     flex-shrink: 0;
-    background: linear-gradient(135deg, #fafbfc, #ffffff);
+    background: var(--black);
 }
 
 /* =========================================================
@@ -536,12 +564,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--gradient-orange);
+    background: var(--orange-gradient);
     color: #ffffff;
     border-radius: 50%;
     font-size: 28px;
     font-weight: 800;
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 20px var(--orange-shadow);
 }
 
 .profile-modal-close {
@@ -669,19 +697,19 @@
 }
 
 .profile-btn-save {
-    background: var(--gradient-orange);
+    background: var(--orange-gradient);
     color: #ffffff;
     flex: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 15px var(--orange-shadow);
 }
 
 .profile-btn-save:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 6px 25px var(--orange-shadow);
 }
 
 .profile-btn-save:active {
@@ -711,7 +739,7 @@
         width: 76px;
     }
 
-    /* Logo */
+    /* Logo - Smaller on mobile */
     .sidebar-logo {
         height: 72px;
         padding: 0;
@@ -724,13 +752,18 @@
         right: 10px;
     }
 
-    .logo-mark {
-        width: 44px;
-        height: 44px;
+    .logo-text {
+        font-size: 18px;
+        letter-spacing: -0.5px;
+        flex-direction: column;
+        gap: 0;
+        line-height: 1.1;
     }
 
-    .logo-text {
-        display: none;
+    .logo-text .nex,
+    .logo-text .arena {
+        display: block;
+        text-align: center;
     }
 
     /* User */
@@ -784,7 +817,7 @@
     }
 
     .menu-item.active {
-        box-shadow: 0 2px 12px rgba(255, 107, 53, 0.2);
+        box-shadow: 0 2px 12px var(--orange-shadow);
     }
 
     .menu-indicator {
@@ -886,8 +919,7 @@
         padding-right: 6px;
     }
 
-    .logo-mark {
-        width: 38px;
-        height: 38px;
+    .logo-text {
+        font-size: 15px;
     }
 }

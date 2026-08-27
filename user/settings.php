@@ -10,7 +10,6 @@ require_once "../db_connect.php";
 ======================================== */
 
 if (!isset($_SESSION['user_id'])) {
-
     header("Location: ../login.php?error=login_required");
     exit();
 }
@@ -21,7 +20,6 @@ if (!isset($_SESSION['user_id'])) {
 ======================================== */
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
-
     header("Location: ../login.php?error=access_denied");
     exit();
 }
@@ -50,95 +48,122 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date_format = isset($_POST['date_format']) ? $_POST['date_format'] : 'd M Y';
     $time_format = isset($_POST['time_format']) ? $_POST['time_format'] : '12';
 
-    // Check if settings exist for user
-    $check_sql = "SELECT setting_id FROM user_settings WHERE user_id = ?";
-    $check_stmt = $conn->prepare($check_sql);
-    $check_stmt->bind_param("i", $user_id);
-    $check_stmt->execute();
-    $check_result = $check_stmt->get_result();
-    $settings_exist = $check_result->num_rows > 0;
-    $check_stmt->close();
+    // Check if user_settings table exists
+    $table_check = $conn->query("SHOW TABLES LIKE 'user_settings'");
+    $table_exists = ($table_check && $table_check->num_rows > 0);
 
-    if ($settings_exist) {
-        // Update existing settings
-        $update_sql = "
-            UPDATE user_settings 
-            SET 
-                notifications_enabled = ?,
-                email_notifications = ?,
-                event_reminders = ?,
-                team_updates = ?,
-                dark_mode = ?,
-                language = ?,
-                timezone = ?,
-                date_format = ?,
-                time_format = ?
-            WHERE user_id = ?
-        ";
+    if ($table_exists) {
+        // Check if settings exist for user
+        $check_sql = "SELECT setting_id FROM user_settings WHERE user_id = ?";
+        $check_stmt = $conn->prepare($check_sql);
+        
+        if ($check_stmt) {
+            $check_stmt->bind_param("i", $user_id);
+            $check_stmt->execute();
+            $check_result = $check_stmt->get_result();
+            $settings_exist = $check_result->num_rows > 0;
+            $check_stmt->close();
 
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param(
-            "iiiiissssi",
-            $notifications_enabled,
-            $email_notifications,
-            $event_reminders,
-            $team_updates,
-            $dark_mode,
-            $language,
-            $timezone,
-            $date_format,
-            $time_format,
-            $user_id
-        );
+            if ($settings_exist) {
+                // Update existing settings
+                $update_sql = "
+                    UPDATE user_settings 
+                    SET 
+                        notifications_enabled = ?,
+                        email_notifications = ?,
+                        event_reminders = ?,
+                        team_updates = ?,
+                        dark_mode = ?,
+                        language = ?,
+                        timezone = ?,
+                        date_format = ?,
+                        time_format = ?
+                    WHERE user_id = ?
+                ";
 
-        if ($update_stmt->execute()) {
-            $message = "Settings updated successfully!";
-            $message_type = "success";
+                $update_stmt = $conn->prepare($update_sql);
+                
+                if ($update_stmt) {
+                    $update_stmt->bind_param(
+                        "iiiiissssi",
+                        $notifications_enabled,
+                        $email_notifications,
+                        $event_reminders,
+                        $team_updates,
+                        $dark_mode,
+                        $language,
+                        $timezone,
+                        $date_format,
+                        $time_format,
+                        $user_id
+                    );
+
+                    if ($update_stmt->execute()) {
+                        $message = "Settings updated successfully!";
+                        $message_type = "success";
+                    } else {
+                        $message = "Error updating settings: " . $conn->error;
+                        $message_type = "error";
+                    }
+                    $update_stmt->close();
+                } else {
+                    $message = "Error preparing update query: " . $conn->error;
+                    $message_type = "error";
+                }
+            } else {
+                // Insert new settings
+                $insert_sql = "
+                    INSERT INTO user_settings (
+                        user_id,
+                        notifications_enabled,
+                        email_notifications,
+                        event_reminders,
+                        team_updates,
+                        dark_mode,
+                        language,
+                        timezone,
+                        date_format,
+                        time_format
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ";
+
+                $insert_stmt = $conn->prepare($insert_sql);
+                
+                if ($insert_stmt) {
+                    $insert_stmt->bind_param(
+                        "iiiiissssi",
+                        $user_id,
+                        $notifications_enabled,
+                        $email_notifications,
+                        $event_reminders,
+                        $team_updates,
+                        $dark_mode,
+                        $language,
+                        $timezone,
+                        $date_format,
+                        $time_format
+                    );
+
+                    if ($insert_stmt->execute()) {
+                        $message = "Settings saved successfully!";
+                        $message_type = "success";
+                    } else {
+                        $message = "Error saving settings: " . $conn->error;
+                        $message_type = "error";
+                    }
+                    $insert_stmt->close();
+                } else {
+                    $message = "Error preparing insert query: " . $conn->error;
+                    $message_type = "error";
+                }
+            }
         } else {
-            $message = "Error updating settings: " . $conn->error;
+            $message = "Error preparing check query: " . $conn->error;
             $message_type = "error";
         }
-        $update_stmt->close();
     } else {
-        // Insert new settings
-        $insert_sql = "
-            INSERT INTO user_settings (
-                user_id,
-                notifications_enabled,
-                email_notifications,
-                event_reminders,
-                team_updates,
-                dark_mode,
-                language,
-                timezone,
-                date_format,
-                time_format
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ";
-
-        $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bind_param(
-            "iiiiissssi",
-            $user_id,
-            $notifications_enabled,
-            $email_notifications,
-            $event_reminders,
-            $team_updates,
-            $dark_mode,
-            $language,
-            $timezone,
-            $date_format,
-            $time_format
-        );
-
-        if ($insert_stmt->execute()) {
-            $message = "Settings saved successfully!";
-            $message_type = "success";
-        } else {
-            $message = "Error saving settings: " . $conn->error;
-            $message_type = "error";
-        }
-        $insert_stmt->close();
+        $message = "Settings table not found. Please contact administrator.";
+        $message_type = "error";
     }
 }
 
@@ -146,26 +171,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 /* ========================================
    GET CURRENT SETTINGS
 ======================================== */
-
-$settings_sql = "
-    SELECT 
-        notifications_enabled,
-        email_notifications,
-        event_reminders,
-        team_updates,
-        dark_mode,
-        language,
-        timezone,
-        date_format,
-        time_format
-    FROM user_settings 
-    WHERE user_id = ?
-";
-
-$settings_stmt = $conn->prepare($settings_sql);
-$settings_stmt->bind_param("i", $user_id);
-$settings_stmt->execute();
-$settings_result = $settings_stmt->get_result();
 
 // Default settings
 $settings = [
@@ -180,10 +185,41 @@ $settings = [
     'time_format' => '12'
 ];
 
-if ($settings_result->num_rows > 0) {
-    $settings = array_merge($settings, $settings_result->fetch_assoc());
+// Check if table exists
+$table_check = $conn->query("SHOW TABLES LIKE 'user_settings'");
+$table_exists = ($table_check && $table_check->num_rows > 0);
+
+if ($table_exists) {
+    $settings_sql = "
+        SELECT 
+            notifications_enabled,
+            email_notifications,
+            event_reminders,
+            team_updates,
+            dark_mode,
+            language,
+            timezone,
+            date_format,
+            time_format
+        FROM user_settings 
+        WHERE user_id = ?
+    ";
+    
+    $settings_stmt = $conn->prepare($settings_sql);
+    
+    if ($settings_stmt) {
+        $settings_stmt->bind_param("i", $user_id);
+        $settings_stmt->execute();
+        $settings_result = $settings_stmt->get_result();
+        
+        if ($settings_result->num_rows > 0) {
+            $settings = array_merge($settings, $settings_result->fetch_assoc());
+        }
+        $settings_stmt->close();
+    } else {
+        error_log("Settings query prepare failed: " . $conn->error);
+    }
 }
-$settings_stmt->close();
 
 
 /* ========================================
@@ -192,25 +228,26 @@ $settings_stmt->close();
 
 $user_sql = "SELECT full_name, email FROM users WHERE user_id = ?";
 $user_stmt = $conn->prepare($user_sql);
-$user_stmt->bind_param("i", $user_id);
-$user_stmt->execute();
-$user_result = $user_stmt->get_result();
-$user_data = $user_result->fetch_assoc();
-$user_stmt->close();
+
+if ($user_stmt) {
+    $user_stmt->bind_param("i", $user_id);
+    $user_stmt->execute();
+    $user_result = $user_stmt->get_result();
+    $user_data = $user_result->fetch_assoc();
+    $user_stmt->close();
+} else {
+    $user_data = ['full_name' => 'User', 'email' => 'Not available'];
+    error_log("User query prepare failed: " . $conn->error);
+}
 
 
 /* ========================================
    SET DARK MODE CLASS
 ======================================== */
 
-// This is the important part - check if dark mode is enabled
 $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
 
-
-// $conn->close();
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -220,7 +257,7 @@ $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
     <title>Settings | NexArena</title>
     <link rel="stylesheet" href="assets/settings.css">
     <!-- Theme CSS (must be loaded first) -->
-<link rel="stylesheet" href="assets/theme.css">
+    <link rel="stylesheet" href="assets/theme.css">
 </head>
 
 <body class="<?php echo $dark_mode_class; ?>">
@@ -816,110 +853,111 @@ $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
                 </section>
 
                 <!-- ========================================
-     APPEARANCE SECTION
-======================================== -->
+                     APPEARANCE SECTION
+                ======================================== -->
 
-<section class="settings-section">
+                <section class="settings-section">
 
-    <div class="section-heading">
+                    <div class="section-heading">
 
-        <div>
+                        <div>
 
-            <span>
-                APPEARANCE
-            </span>
+                            <span>
+                                APPEARANCE
+                            </span>
 
-            <h2>
-                Appearance
-            </h2>
+                            <h2>
+                                Appearance
+                            </h2>
 
-            <p class="section-description">
-                Customize the look and feel of NexArena.
-            </p>
+                            <p class="section-description">
+                                Customize the look and feel of NexArena.
+                            </p>
 
-        </div>
-
-    </div>
-
-    <div class="settings-grid one-col">
-
-        <div class="settings-card">
-
-            <div class="settings-card-header">
-
-                <span class="card-icon">🎨</span>
-
-                <div>
-
-                    <h3>Theme Settings</h3>
-
-                    <p>
-                        Choose your preferred theme
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="settings-card-body">
-
-                <div class="toggle-item">
-
-                    <div class="toggle-info">
-
-                        <strong>
-                            Dark Mode
-                        </strong>
-
-                        <p>
-                            Switch between light and dark theme
-                        </p>
-
-                    </div>
-
-                    <label class="toggle-switch">
-
-                        <input 
-                            type="checkbox" 
-                            name="dark_mode" 
-                            id="dark_mode"
-                            data-theme-toggle
-                            <?php echo $settings['dark_mode'] ? 'checked' : ''; ?>
-                        >
-
-                        <span class="toggle-slider"></span>
-
-                    </label>
-
-                </div>
-
-                <div class="theme-preview" style="margin-top: 15px;">
-
-                    <p style="font-size: 11px; color: #999999; margin-bottom: 8px;">
-                        Current Theme:
-                    </p>
-
-                    <div class="preview-boxes">
-
-                        <div class="preview-box light-preview">
-                            ☀️ Light
-                        </div>
-
-                        <div class="preview-box dark-preview" data-theme-indicator>
-                            <?php echo $settings['dark_mode'] ? '🌙 Dark' : '☀️ Light'; ?>
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="settings-grid one-col">
 
-            </div>
+                        <div class="settings-card">
 
-        </div>
+                            <div class="settings-card-header">
 
-    </div>
+                                <span class="card-icon">🎨</span>
 
-</section>
+                                <div>
+
+                                    <h3>Theme Settings</h3>
+
+                                    <p>
+                                        Choose your preferred theme
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="settings-card-body">
+
+                                <div class="toggle-item">
+
+                                    <div class="toggle-info">
+
+                                        <strong>
+                                            Dark Mode
+                                        </strong>
+
+                                        <p>
+                                            Switch between light and dark theme
+                                        </p>
+
+                                    </div>
+
+                                    <label class="toggle-switch">
+
+                                        <input 
+                                            type="checkbox" 
+                                            name="dark_mode" 
+                                            id="dark_mode"
+                                            data-theme-toggle
+                                            <?php echo $settings['dark_mode'] ? 'checked' : ''; ?>
+                                        >
+
+                                        <span class="toggle-slider"></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="theme-preview" style="margin-top: 15px;">
+
+                                    <p style="font-size: 11px; color: #999999; margin-bottom: 8px;">
+                                        Current Theme:
+                                    </p>
+
+                                    <div class="preview-boxes">
+
+                                        <div class="preview-box light-preview">
+                                            ☀️ Light
+                                        </div>
+
+                                        <div class="preview-box dark-preview" data-theme-indicator>
+                                            <?php echo $settings['dark_mode'] ? '🌙 Dark' : '☀️ Light'; ?>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
                 <!-- ========================================
                      DANGER ZONE
                 ======================================== -->
@@ -1025,7 +1063,7 @@ $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
             </div>
 
             <p>
-                © <?php echo date("Y"); ?> NexArena. All Rights Reserved.
+                &copy; <?php echo date("Y"); ?> NexArena. All Rights Reserved.
             </p>
 
         </footer>
@@ -1095,7 +1133,6 @@ $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
     </div>
 
     <script>
-
         function confirmDelete() {
             document.getElementById('deleteModal').style.display = 'flex';
             document.getElementById('confirmDeleteInput').value = '';
@@ -1138,10 +1175,10 @@ $dark_mode_class = ($settings['dark_mode'] == 1) ? 'dark-mode' : '';
                 deleteAccount();
             }
         });
-
     </script>
-<!-- Theme JavaScript -->
-<script src="assets/theme.js"></script>1
+
+    <!-- Theme JavaScript -->
+    <script src="assets/theme.js"></script>
 </body>
 
 </html>

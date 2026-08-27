@@ -1,4 +1,206 @@
 /* =========================================================
+   FIXTURES - UNIFIED DESIGN
+========================================================= */
+
+.fixtures-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px 28px 60px;
+    width: 100%;
+}
+
+.fixtures-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.fixture-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.fixture-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--orange);
+}
+
+.fixture-card:hover {
+    border-color: var(--orange-border);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.fixture-card .fixture-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.fixture-card .fixture-sport {
+    padding: 4px 12px;
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-border);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--orange);
+}
+
+.fixture-card .fixture-status {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.fixture-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.fixture-card .fixture-teams {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    padding: 14px 10px;
+    margin-bottom: 14px;
+}
+
+.fixture-card .fixture-team {
+    text-align: center;
+}
+
+.fixture-card .fixture-team strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.fixture-card .fixture-vs {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 2px solid var(--orange);
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: auto;
+}
+
+.fixture-card .fixture-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.fixture-card .fixture-details div {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.fixture-card .fixture-details span {
+    display: block;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.fixture-card .fixture-details strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fixture-card .fixture-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: var(--orange);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.fixture-card .fixture-button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .fixtures-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .fixtures-page {
+        padding: 20px 16px 40px;
+    }
+    
+    .fixtures-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fixture-card .fixture-details {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    .fixtures-page {
+        padding: 16px 12px 30px;
+    }
+    
+    .fixture-card .fixture-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .fixture-card .fixture-teams {
+        grid-template-columns: 1fr 32px 1fr;
+    }
+    
+    .fixture-card .fixture-vs {
+        width: 30px;
+        height: 30px;
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
    NEXARENA FIXTURES PAGE
    FULLY RESPONSIVE WITH DARK MODE SUPPORT
 ========================================================= */

@@ -1,6 +1,7 @@
 <!-- =========================================================
-     NEXARENA NAVBAR – SELF CONTAINED
+     NEXARENA NAVBAR – FULLY RESPONSIVE
      Theme: White + Black + Orange (with Dark Mode Support)
+     Works on all screen sizes with hamburger menu
 ========================================================= -->
 
 <style>
@@ -25,10 +26,12 @@
 
         position: sticky;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 1000;
 
         width: 100%;
-        height: 100px;
+        height: 70px;
 
         background: rgba(255, 255, 255, 0.98);
 
@@ -39,7 +42,7 @@
 
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
 
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
 
@@ -48,6 +51,7 @@
     .site-header.scrolled {
         background: rgba(255, 255, 255, 0.99);
         box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+        height: 62px;
     }
 
 
@@ -75,23 +79,23 @@
         width: 100%;
         max-width: 1280px;
 
-        min-height: 72px;
+        min-height: 60px;
 
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 16px;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        gap: 20px;
+        gap: 12px;
 
         position: relative;
     }
 
 
     /* =========================================================
-       BRAND / LOGO
+       BRAND / LOGO - TEXT LOGO
     ========================================================= */
 
     .brand {
@@ -101,49 +105,43 @@
         flex-shrink: 0;
 
         text-decoration: none;
+        z-index: 1003;
+    }
 
-        margin-right: 10px;
+    /* Text Logo */
+    .brand .logo-text {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        transition: color 0.3s ease;
+    }
+
+    .brand .logo-text .nex {
+        color: #1a1a2e;
+        transition: color 0.3s ease;
+    }
+
+    .brand .logo-text .arena {
+        color: #f97316;
+        transition: color 0.3s ease;
+    }
+
+    /* Dark Mode Logo Colors */
+    [data-theme="dark"] .brand .logo-text .nex {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .brand .logo-text .arena {
+        color: #f97316 !important;
     }
 
 
-    .brand img {
-        display: block;
-
-        height: 120px;
-        width: auto;
-
-        margin-right: 50px;
-
-        object-fit: contain;
-
-        transition: transform 0.3s ease;
-    }
-
-
-    .brand:hover img {
-        transform: scale(1.03);
-    }
-
-/* =========================================================
-   LOGO - Dark Mode Support
-========================================================= */
-
-/* Default logo (for light mode) */
-.brand img {
-    display: block;
-    height: 120px;
-    width: auto;
-    margin-right: 50px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-/* Dark mode logo - Fully Orange */
-[data-theme="dark"] .brand img {
-    filter: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(0deg) brightness(1.2) !important;
-}
     /* =========================================================
-       MAIN NAVIGATION
+       MAIN NAVIGATION - DESKTOP
     ========================================================= */
 
     .main-nav {
@@ -151,26 +149,26 @@
         align-items: center;
         justify-content: center;
 
-        gap: 0;
+        gap: 4px;
 
         flex: 1;
 
-        margin: 0 10px;
+        margin: 0 8px;
     }
 
 
     .main-nav > a {
         position: relative;
 
-        padding: 8px 18px;
-        margin: 0 4px;
+        padding: 6px 14px;
+        margin: 0 2px;
 
         color: #222222;
 
         font-size: 14px;
         font-weight: 600;
 
-        letter-spacing: 0.3px;
+        letter-spacing: 0.2px;
 
         text-decoration: none;
 
@@ -178,7 +176,9 @@
 
         white-space: nowrap;
 
-        transition: all 0.25s ease;
+        transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        cursor: pointer;
     }
 
 
@@ -212,64 +212,64 @@
         position: absolute;
 
         left: 50%;
-        bottom: 4px;
+        bottom: 2px;
 
         width: 0;
         height: 2.5px;
 
-        background: #ff7600;
+        background: #f97316;
 
         border-radius: 4px;
 
         transform: translateX(-50%);
 
-        transition: width 0.3s ease;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
 
     /* Hover */
 
     .main-nav > a:hover {
-        color: #ff7600;
-        background: rgba(255, 118, 0, 0.06);
+        color: #f97316;
+        background: rgba(249, 115, 22, 0.06);
     }
 
 
     .main-nav > a:hover::after {
-        width: 60%;
+        width: 50%;
     }
 
 
     /* Active */
 
     .main-nav > a.active {
-        color: #ff7600;
+        color: #f97316;
+        background: rgba(249, 115, 22, 0.06);
     }
 
 
     .main-nav > a.active::after {
-        width: 60%;
+        width: 50%;
     }
 
 
     /* =========================================================
-       NAV ACTIONS
+       NAV ACTIONS - DESKTOP
     ========================================================= */
 
     .nav-actions {
         display: flex;
         align-items: center;
 
-        gap: 10px;
+        gap: 8px;
 
         flex-shrink: 0;
-
-        margin-left: 5px;
+        z-index: 1003;
     }
 
 
     /* =========================================================
-       DARK MODE TOGGLE BUTTON
+       ATTRACTIVE DARK MODE TOGGLE BUTTON
     ========================================================= */
 
     .dark-mode-toggle {
@@ -277,53 +277,90 @@
         align-items: center;
         justify-content: center;
 
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
 
-        border: 1.5px solid #e0e0e0;
-        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        border-radius: 50%;
 
         background: #ffffff;
 
         cursor: pointer;
 
-        font-size: 18px;
+        font-size: 16px;
 
         flex-shrink: 0;
 
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        position: relative;
+        overflow: hidden;
     }
 
+    /* Glow effect on hover */
+    .dark-mode-toggle::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f97316, #fb923c, #f97316);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    .dark-mode-toggle:hover::before {
+        opacity: 1;
+    }
 
     .dark-mode-toggle:hover {
-        border-color: #ff7600;
-        background: rgba(255, 118, 0, 0.04);
-        transform: scale(1.05);
+        border-color: transparent;
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
     }
 
+    .dark-mode-toggle:active {
+        transform: scale(0.92);
+    }
 
+    /* Icon inside toggle - positioned above glow */
     .dark-mode-toggle #darkModeIcon {
+        position: relative;
+        z-index: 1;
         line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    .dark-mode-toggle:hover #darkModeIcon {
+        transform: rotate(20deg) scale(1.1);
+    }
 
     /* Dark mode toggle in dark mode */
-
     [data-theme="dark"] .dark-mode-toggle {
         background: #1a1a2e !important;
-        border-color: #2d2d44 !important;
-        color: #e2e8f0 !important;
+        border-color: #3d3d5c !important;
+        color: #fbbf24 !important;
     }
 
+    [data-theme="dark"] .dark-mode-toggle::before {
+        background: linear-gradient(135deg, #fbbf24, #f59e0b, #fbbf24) !important;
+    }
 
     [data-theme="dark"] .dark-mode-toggle:hover {
-        border-color: #ff7600 !important;
-        background: rgba(249, 115, 22, 0.08) !important;
+        border-color: transparent !important;
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.3) !important;
+    }
+
+    [data-theme="dark"] .dark-mode-toggle:hover #darkModeIcon {
+        transform: rotate(-20deg) scale(1.1);
     }
 
 
     /* =========================================================
-       LOGIN + REGISTER
+       LOGIN + REGISTER - DESKTOP
     ========================================================= */
 
     .nav-login,
@@ -332,22 +369,22 @@
         align-items: center;
         justify-content: center;
 
-        min-height: 38px;
+        min-height: 34px;
 
-        padding: 8px 20px;
+        padding: 6px 16px;
 
-        border-radius: 10px;
+        border-radius: 8px;
 
         font-size: 13px;
         font-weight: 700;
 
-        letter-spacing: 0.3px;
+        letter-spacing: 0.2px;
 
         text-decoration: none;
 
         white-space: nowrap;
 
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
 
@@ -361,11 +398,11 @@
 
 
     .nav-login:hover {
-        color: #ff7600;
-        background: rgba(255, 118, 0, 0.06);
-        border-color: #ff7600;
+        color: #f97316;
+        background: rgba(249, 115, 22, 0.06);
+        border-color: #f97316;
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(255, 118, 0, 0.12);
+        box-shadow: 0 4px 15px rgba(249, 115, 22, 0.12);
     }
 
 
@@ -373,18 +410,18 @@
 
     .nav-register {
         color: #ffffff;
-        background: #ff7600;
-        border: 1.5px solid #ff7600;
-        box-shadow: 0 2px 12px rgba(255, 118, 0, 0.20);
+        background: #f97316;
+        border: 1.5px solid #f97316;
+        box-shadow: 0 2px 12px rgba(249, 115, 22, 0.20);
     }
 
 
     .nav-register:hover {
         color: #ffffff;
-        background: #e45d00;
-        border-color: #e45d00;
+        background: #ea580c;
+        border-color: #ea580c;
         transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(255, 118, 0, 0.30);
+        box-shadow: 0 6px 25px rgba(249, 115, 22, 0.30);
     }
 
 
@@ -420,7 +457,7 @@
 
 
     /* =========================================================
-       MOBILE MENU BUTTON
+       MOBILE MENU BUTTON - HAMBURGER
     ========================================================= */
 
     .menu-toggle {
@@ -430,14 +467,14 @@
         align-items: center;
         justify-content: center;
 
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
 
         padding: 0;
 
         border: 1.5px solid #e8e8e8;
 
-        border-radius: 10px;
+        border-radius: 8px;
 
         background: #ffffff;
 
@@ -445,15 +482,17 @@
 
         transition: all 0.3s ease;
 
-        gap: 5px;
+        gap: 4px;
 
         flex-shrink: 0;
+
+        z-index: 1003;
     }
 
 
     .menu-toggle:hover {
-        border-color: #ff7600;
-        background: rgba(255, 118, 0, 0.04);
+        border-color: #f97316;
+        background: rgba(249, 115, 22, 0.04);
     }
 
 
@@ -495,17 +534,14 @@
 
 
     /* Hamburger → X */
-
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-
 
     .menu-toggle.active span:nth-child(2) {
         opacity: 0;
         transform: scaleX(0);
     }
-
 
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
@@ -522,41 +558,42 @@
 
 
     /* =========================================================
-       EVENT / ABOUT / CONTACT SCROLL OFFSET
-       
-       This prevents the sticky navbar from covering
-       the section heading after clicking navbar links.
+       SCROLL OFFSET FOR HASH LINKS
     ========================================================= */
 
+    #home,
+    #sports,
     #events,
     #about,
     #contact {
-        scroll-margin-top: 105px;
+        scroll-margin-top: 90px;
     }
 
 
     /* =========================================================
-       TABLET / MOBILE
+       RESPONSIVE - TABLET / MOBILE
     ========================================================= */
 
-    @media (max-width: 820px) {
+    @media (max-width: 992px) {
 
         .site-header {
-            height: 80px;
+            height: 64px;
         }
 
+        .site-header.scrolled {
+            height: 58px;
+        }
 
         .nav-container {
-            padding: 0 16px;
-            min-height: 70px;
+            padding: 0 14px;
+            min-height: 56px;
         }
 
 
-        /* Logo */
-
-        .brand img {
-            height: 90px;
-            margin-right: 0;
+        /* Logo - Smaller on tablet */
+        .brand .logo-text {
+            font-size: 20px;
+            letter-spacing: -0.3px;
         }
 
 
@@ -571,42 +608,39 @@
 
         .menu-toggle {
             display: flex;
-            position: relative;
-            z-index: 1002;
         }
 
 
         /* =====================================================
-           MOBILE NAV
+           MOBILE NAV - FULL SCREEN OVERLAY
         ===================================================== */
 
         .main-nav {
-            position: absolute;
+            position: fixed;
 
-            top: calc(100% + 8px);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
 
-            left: 16px;
-            right: 16px;
-
-            width: auto;
+            width: 100%;
+            height: 100vh;
 
             display: flex;
 
             flex-direction: column;
 
-            align-items: stretch;
+            align-items: center;
+            justify-content: center;
 
-            gap: 0;
+            gap: 8px;
 
-            padding: 12px 14px;
+            padding: 80px 20px 40px;
 
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.98);
 
-            border: 1px solid #eeeeee;
-
-            border-radius: 16px;
-
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
 
             opacity: 0;
 
@@ -614,15 +648,17 @@
 
             pointer-events: none;
 
-            transform: translateY(-12px) scale(0.97);
+            transform: scale(0.95);
 
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
             z-index: 1001;
 
             margin: 0;
 
             flex: none;
+
+            overflow-y: auto;
         }
 
 
@@ -631,59 +667,64 @@
         ===================================================== */
 
         [data-theme="dark"] .main-nav {
-            background: #1a1a2e !important;
-            border-color: #2d2d44 !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+            background: rgba(18, 18, 34, 0.98) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
 
         /* Open mobile menu */
-
         .main-nav.active {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
-            transform: translateY(0) scale(1);
+            transform: scale(1);
         }
 
 
         /* Mobile links */
-
         .main-nav > a {
             width: 100%;
+            max-width: 400px;
 
-            padding: 12px 16px;
+            padding: 14px 20px;
 
-            margin: 1px 0;
+            margin: 4px 0;
 
-            border-radius: 10px;
+            border-radius: 12px;
 
             color: #222222;
 
-            font-size: 15px;
-
+            font-size: 18px;
             font-weight: 600;
 
-            text-align: left;
+            text-align: center;
+
+            white-space: normal;
+
+            border: 1px solid transparent;
+
+            transition: all 0.3s ease;
         }
 
 
         /* Remove underline on mobile */
-
         .main-nav > a::after {
             display: none;
         }
 
 
         .main-nav > a:hover {
-            color: #ff7600;
-            background: rgba(255, 118, 0, 0.06);
+            color: #f97316;
+            background: rgba(249, 115, 22, 0.06);
+            border-color: rgba(249, 115, 22, 0.1);
         }
 
 
         .main-nav > a.active {
-            color: #ff7600;
-            background: rgba(255, 118, 0, 0.06);
+            color: #f97316;
+            background: rgba(249, 115, 22, 0.08);
+            border-color: #f97316;
         }
 
 
@@ -699,12 +740,14 @@
         [data-theme="dark"] .main-nav > a:hover {
             color: #f97316 !important;
             background: rgba(249, 115, 22, 0.08) !important;
+            border-color: rgba(249, 115, 22, 0.15) !important;
         }
 
 
         [data-theme="dark"] .main-nav > a.active {
             color: #f97316 !important;
-            background: rgba(249, 115, 22, 0.08) !important;
+            background: rgba(249, 115, 22, 0.12) !important;
+            border-color: #f97316 !important;
         }
 
 
@@ -717,13 +760,16 @@
 
             grid-template-columns: 1fr 1fr;
 
-            gap: 10px;
+            gap: 12px;
 
-            margin-top: 10px;
+            margin-top: 20px;
 
-            padding-top: 14px;
+            padding-top: 20px;
 
             border-top: 1.5px solid #f0f0f0;
+
+            width: 100%;
+            max-width: 400px;
         }
 
 
@@ -732,7 +778,7 @@
         ===================================================== */
 
         [data-theme="dark"] .mobile-nav-actions {
-            border-top-color: #2d2d44 !important;
+            border-top-color: rgba(255, 255, 255, 0.08) !important;
         }
 
 
@@ -744,7 +790,7 @@
 
             border-radius: 10px;
 
-            font-size: 13px;
+            font-size: 15px;
 
             justify-content: center;
         }
@@ -756,7 +802,7 @@
 
 
         [data-theme="dark"] .mobile-nav-actions .nav-login {
-            border-color: #2d2d44 !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
             color: #e2e8f0 !important;
         }
 
@@ -777,47 +823,53 @@
     @media (max-width: 480px) {
 
         .site-header {
-            height: 72px;
+            height: 56px;
         }
 
+        .site-header.scrolled {
+            height: 52px;
+        }
 
         .nav-container {
-            padding: 0 12px;
-            min-height: 60px;
+            padding: 0 10px;
+            min-height: 52px;
+            gap: 6px;
         }
 
 
-        .brand img {
-            height: 82px;
+        .brand .logo-text {
+            font-size: 17px;
+            letter-spacing: -0.2px;
         }
 
 
         .menu-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            gap: 3px;
         }
 
 
         .menu-toggle span {
-            width: 18px;
+            width: 16px;
             height: 2px;
         }
 
 
-        .main-nav {
-            left: 12px;
-            right: 12px;
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
 
-            padding: 10px 12px;
 
-            border-radius: 14px;
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
         }
 
 
         .main-nav > a {
-            padding: 10px 14px;
-            font-size: 14px;
+            font-size: 16px;
+            padding: 12px 16px;
         }
 
 
@@ -827,10 +879,43 @@
         }
 
 
+        .mobile-nav-actions .nav-login,
+        .mobile-nav-actions .nav-register {
+            min-height: 40px;
+            font-size: 14px;
+        }
+
+
+        #home,
+        #sports,
         #events,
         #about,
         #contact {
-            scroll-margin-top: 85px;
+            scroll-margin-top: 80px;
+        }
+
+    }
+
+
+    /* =========================================================
+       VERY SMALL PHONES
+    ========================================================= */
+
+    @media (max-width: 360px) {
+
+        .brand .logo-text {
+            font-size: 15px;
+        }
+
+
+        .main-nav > a {
+            padding: 10px 14px;
+            font-size: 15px;
+        }
+
+
+        .nav-container {
+            padding: 0 8px;
         }
 
     }
@@ -848,30 +933,23 @@
 
 
         <!-- =====================================================
-             LOGO
+             LOGO - TEXT LOGO
         ====================================================== -->
 
         <a href="index.php" class="brand">
 
-            <img
-                src="assets/images/logo.png"
-                alt="NexArena Logo"
-            >
+            <div class="logo-text">
+                <span class="nex">Nex</span><span class="arena">Arena</span>
+            </div>
 
         </a>
 
 
         <!-- =====================================================
-             MOBILE MENU BUTTON
+             MOBILE MENU BUTTON - HAMBURGER
         ====================================================== -->
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open menu"
-            aria-expanded="false"
-        >
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
 
             <span></span>
             <span></span>
@@ -884,11 +962,7 @@
              MAIN NAVIGATION
         ====================================================== -->
 
-        <nav
-            class="main-nav"
-            id="mainNav"
-            aria-label="Main Navigation"
-        >
+        <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
 
             <!-- Home -->
             <a href="index.php">
@@ -926,18 +1000,12 @@
 
             <div class="mobile-nav-actions">
 
-                <a
-                    href="login.php"
-                    class="nav-login"
-                >
+                <a href="login.php" class="nav-login">
                     Login
                 </a>
 
 
-                <a
-                    href="registration.php"
-                    class="nav-register"
-                >
+                <a href="registration.php" class="nav-register">
                     Register
                 </a>
 
@@ -947,39 +1015,28 @@
 
 
         <!-- =====================================================
-             DESKTOP LOGIN / REGISTER + DARK MODE TOGGLE
+             DESKTOP LOGIN / REGISTER + ATTRACTIVE DARK MODE TOGGLE
         ====================================================== -->
 
         <div class="nav-actions">
 
             <!-- =================================================
-                 DARK MODE TOGGLE BUTTON
+                 ATTRACTIVE DARK MODE TOGGLE BUTTON
             ================================================== -->
 
-            <button
-                class="dark-mode-toggle"
-                id="darkModeToggle"
-                type="button"
-                aria-label="Toggle Dark Mode"
-            >
+            <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
 
                 <span id="darkModeIcon">🌙</span>
 
             </button>
 
 
-            <a
-                href="login.php"
-                class="nav-login"
-            >
+            <a href="login.php" class="nav-login">
                 Login
             </a>
 
 
-            <a
-                href="registration.php"
-                class="nav-register"
-            >
+            <a href="registration.php" class="nav-register">
                 Register
             </a>
 
@@ -991,296 +1048,200 @@
 
 
 <!-- =========================================================
-     NAVBAR JAVASCRIPT
+     NAVBAR JAVASCRIPT - SIMPLIFIED & WORKING
 ========================================================= -->
 
 <script>
+    (function() {
 
-document.addEventListener("DOMContentLoaded", function () {
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const siteHeader = document.getElementById('siteHeader');
 
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-    const siteHeader = document.getElementById("siteHeader");
-
-    const navLinks = mainNav.querySelectorAll("a");
-
-
-    /* =========================================================
-       MOBILE MENU TOGGLE
-    ========================================================= */
-
-    if (menuToggle) {
-        menuToggle.addEventListener("click", function () {
-
-            const isOpen =
-                mainNav.classList.toggle("active");
-
-            menuToggle.classList.toggle("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close menu"
-                    : "Open menu"
-            );
-
-        });
-    }
-
-
-    /* =========================================================
-       CLOSE MOBILE MENU AFTER CLICK
-    ========================================================= */
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            mainNav.classList.remove("active");
-
-            menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        });
-
-    });
-
-
-    /* =========================================================
-       CLOSE MENU WHEN CLICKING OUTSIDE
-    ========================================================= */
-
-    document.addEventListener("click", function (event) {
-
-        if (
-            !mainNav.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-
-            mainNav.classList.remove("active");
-
-            menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        }
-
-    });
-
-
-    /* =========================================================
-       HEADER SCROLL EFFECT
-    ========================================================= */
-
-    function handleScroll() {
-
-        if (window.scrollY > 20) {
-
-            siteHeader.classList.add("scrolled");
-
-        } else {
-
-            siteHeader.classList.remove("scrolled");
-
-        }
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        handleScroll,
-        { passive: true }
-    );
-
-
-    handleScroll();
-
-
-    /* =========================================================
-       ACTIVE NAV LINK
-    ========================================================= */
-
-    const currentPage =
-        window.location.pathname.split("/").pop();
-
-
-    navLinks.forEach(function (link) {
-
-        const href =
-            link.getAttribute("href");
-
-        if (!href) return;
-
-
-        /*
-         * Don't mark Login/Register as active.
-         */
-
-        if (
-            href.includes("login.php") ||
-            href.includes("registration.php")
-        ) {
+        // Make sure elements exist
+        if (!menuToggle || !mainNav) {
+            console.error('Navbar elements not found!');
             return;
         }
 
+        // Menu toggle function
+        function toggleMenu() {
+            const isOpen = mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
 
-        /*
-         * Sports page
-         */
+            // Update ARIA attributes
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
 
-        if (
-            currentPage === "sports.php" &&
-            href === "sports.php"
-        ) {
-
-            link.classList.add("active");
-
+            // Prevent body scroll
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         }
 
-
-        /*
-         * Home page
-         */
-
-        if (
-            (currentPage === "" ||
-             currentPage === "index.php") &&
-            href === "index.php"
-        ) {
-
-            link.classList.add("active");
-
+        // Close menu function
+        function closeMenu() {
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Open menu');
+            document.body.style.overflow = '';
         }
 
-    });
+        // Event: Toggle button click
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
 
+        // Event: Click on nav links
+        document.querySelectorAll('#mainNav a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                closeMenu();
 
-    /* =========================================================
-       EVENTS LINK ACTIVE WHEN HASH = #events
-    ========================================================= */
+                // Handle hash links
+                const href = this.getAttribute('href');
+                if (href && href.includes('#') && !href.includes('login.php') && !href.includes('registration.php')) {
+                    const hash = href.split('#')[1];
+                    if (hash) {
+                        const target = document.getElementById(hash);
+                        if (target) {
+                            setTimeout(function() {
+                                const headerOffset = 90;
+                                const elementPosition = target.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }, 300);
+                        }
+                    }
+                }
+            });
+        });
 
-    function updateHashActive() {
-
-        const hash =
-            window.location.hash;
-
-        navLinks.forEach(function (link) {
-
-            if (
-                link.getAttribute("href") ===
-                "index.php#events"
-            ) {
-
-                link.classList.remove("active");
-
+        // Event: Click outside to close
+        document.addEventListener('click', function(event) {
+            if (!mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMenu();
             }
+        });
 
+        // Event: ESC key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Event: Resize to desktop
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth > 992) {
+                    closeMenu();
+                }
+            }, 250);
         });
 
 
-        if (hash === "#events") {
+        // =========================================================
+        // HEADER SCROLL EFFECT
+        // =========================================================
 
-            navLinks.forEach(function (link) {
+        if (siteHeader) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 20) {
+                    siteHeader.classList.add('scrolled');
+                } else {
+                    siteHeader.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        }
 
-                if (
-                    link.getAttribute("href") ===
-                    "index.php#events"
-                ) {
 
-                    link.classList.add("active");
+        // =========================================================
+        // ACTIVE NAV LINK
+        // =========================================================
 
+        function updateActiveLinks() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.php';
+            const currentHash = window.location.hash;
+
+            document.querySelectorAll('#mainNav a').forEach(function(link) {
+                const href = link.getAttribute('href');
+                if (!href) return;
+
+                // Skip login/register
+                if (href.includes('login.php') || href.includes('registration.php')) {
+                    return;
                 }
 
+                link.classList.remove('active');
+
+                // Check for exact match
+                if (href === currentPage || (href === 'index.php' && currentPage === 'index.php')) {
+                    link.classList.add('active');
+                }
+
+                // Check for hash match
+                if (currentHash && href === 'index.php' + currentHash) {
+                    link.classList.add('active');
+                }
+
+                // Check if href contains hash and matches current hash
+                if (href.includes('#') && href.split('#')[1] === currentHash.replace('#', '')) {
+                    link.classList.add('active');
+                }
             });
-
         }
 
-    }
+        updateActiveLinks();
+        window.addEventListener('hashchange', updateActiveLinks);
 
 
-    window.addEventListener(
-        "hashchange",
-        updateHashActive
-    );
+        // =========================================================
+        // DARK MODE TOGGLE
+        // =========================================================
 
-    updateHashActive();
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        const html = document.documentElement;
 
+        if (darkModeToggle) {
+            const icons = { light: '🌙', dark: '☀️' };
 
-    /* =========================================================
-       DARK MODE TOGGLE
-    ========================================================= */
-
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeIcon = document.getElementById('darkModeIcon');
-    const html = document.documentElement;
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            html.setAttribute('data-theme', 'dark');
-            if (darkModeIcon) darkModeIcon.textContent = '☀️';
-        } else {
-            html.removeAttribute('data-theme');
-            if (darkModeIcon) darkModeIcon.textContent = '🌙';
-        }
-        localStorage.setItem('nexarena_theme', theme);
-        document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: theme } }));
-    }
-
-    // Load saved theme or system preference
-    const savedTheme = localStorage.getItem('nexarena_theme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-    }
-
-    // Toggle dark mode on button click
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', function() {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-            
-            // Try to use ThemeManager if available
-            if (window.ThemeManager) {
-                window.ThemeManager.toggleTheme();
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                    if (darkModeIcon) darkModeIcon.textContent = icons.dark;
+                } else {
+                    html.removeAttribute('data-theme');
+                    if (darkModeIcon) darkModeIcon.textContent = icons.light;
+                }
+                localStorage.setItem('nexarena_theme', theme);
             }
-        });
-    }
 
-    // Listen for theme changes from ThemeManager
-    document.addEventListener('themeChanged', function(e) {
-        if (e.detail && e.detail.theme) {
-            if (darkModeIcon) {
-                darkModeIcon.textContent = e.detail.theme === 'dark' ? '☀️' : '🌙';
+            // Load saved theme
+            const savedTheme = localStorage.getItem('nexarena_theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                applyTheme(prefersDark ? 'dark' : 'light');
             }
+
+            darkModeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+
+                if (window.ThemeManager) {
+                    window.ThemeManager.toggleTheme();
+                }
+            });
         }
-    });
 
-});
+        console.log('Navbar loaded successfully!');
+        console.log('Screen width:', window.innerWidth);
 
+    })();
 </script>

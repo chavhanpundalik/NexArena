@@ -1,4 +1,156 @@
 /* =========================================================
+   NOTIFICATIONS - UNIFIED DESIGN
+========================================================= */
+
+.notifications-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 28px 60px;
+    width: 100%;
+}
+
+.notification-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.notification-card:hover {
+    border-color: var(--orange-border);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.notification-card.unread {
+    border-left: 4px solid var(--orange);
+    background: var(--bg-secondary);
+}
+
+.notification-card .notification-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-border);
+    border-radius: 12px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.notification-card .notification-content {
+    flex: 1;
+}
+
+.notification-card .notification-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.notification-card .notification-type {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+}
+
+.notification-card .new-label {
+    padding: 2px 10px;
+    background: var(--orange);
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.notification-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.notification-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.notification-card .notification-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.notification-card .notification-time {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.notification-card .read-btn {
+    padding: 6px 16px;
+    background: var(--orange);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.notification-card .read-btn:hover {
+    background: var(--orange-dark);
+}
+
+.notification-card .read-status {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notifications-container {
+        padding: 20px 16px 40px;
+    }
+    
+    .notification-card {
+        padding: 16px;
+        flex-direction: column;
+    }
+    
+    .notification-card .notification-bottom {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .notification-card .read-btn {
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .notifications-container {
+        padding: 16px 12px 30px;
+    }
+}
+
+/* =========================================================
    NEXARENA NOTIFICATIONS
    FULLY RESPONSIVE WITH DARK MODE SUPPORT
 ========================================================= */

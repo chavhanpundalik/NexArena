@@ -1,4 +1,146 @@
 /* =========================================================
+   TEAMS - UNIFIED DESIGN
+========================================================= */
+
+.team-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px 28px 60px;
+    width: 100%;
+}
+
+/* Team Card */
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.team-card:hover {
+    border-color: var(--orange-border);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.team-card .team-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.team-card .team-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-border);
+    border-radius: 12px;
+    font-size: 22px;
+}
+
+.team-card .team-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.team-card .team-status.active {
+    background: var(--status-open-bg);
+    color: var(--status-open-text);
+}
+
+.team-card .team-status.inactive {
+    background: var(--status-closed-bg);
+    color: var(--status-closed-text);
+}
+
+.team-card .team-status.pending {
+    background: var(--status-notopen-bg);
+    color: var(--status-notopen-text);
+}
+
+.team-card .team-content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.team-card .team-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+}
+
+.team-card .team-detail .detail-icon {
+    font-size: 16px;
+}
+
+.team-card .team-detail small {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+}
+
+.team-card .team-detail strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: block;
+}
+
+.team-card .view-team-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: var(--orange);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    margin-top: 14px;
+}
+
+.team-card .view-team-btn:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-main {
+        padding: 20px 16px 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .team-main {
+        padding: 16px 12px 30px;
+    }
+}
+
+/* =========================================================
    NEXARENA TEAM PAGES
    FULLY RESPONSIVE WITH DARK MODE SUPPORT
 ========================================================= */

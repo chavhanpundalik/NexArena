@@ -401,7 +401,7 @@ document.addEventListener("click", function (event) {
             <h2>Fixtures</h2>
         </div>
 
-        <a href="fixtures.php" class="view-all">
+        <a href="fixture.php" class="view-all">
             View All Fixtures →
         </a>
 

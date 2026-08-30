@@ -171,7 +171,7 @@ $admin_initial = strtoupper(substr($admin_name, 0, 1));
         <!-- Teams -->
 
         <a
-            href="teams.php"
+            href="add_team.php"
             class="menu-item <?= $current_page === 'teams.php' ? 'active' : '' ?>"
         >
 

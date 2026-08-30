@@ -37,14 +37,20 @@ if (empty($_SESSION['csrf_token'])) {
 $csrf_token = $_SESSION['csrf_token'];
 
 // ============================================================
-// LOG ACTIVITY FUNCTION - ADDED THIS
+// LOG ACTIVITY FUNCTION - FIXED
 // ============================================================
 function log_activity($conn, $user_id, $user_name, $action, $details = '') {
     try {
-        $stmt = $conn->prepare("INSERT INTO activity_logs (user_id, user_name, action, details, created_at) VALUES (?, ?, ?, ?, NOW())");
-        $stmt->bind_param("isss", $user_id, $user_name, $action, $details);
-        $stmt->execute();
-        $stmt->close();
+        // Check if activity_logs table exists
+        $checkTable = $conn->query("SHOW TABLES LIKE 'activity_logs'");
+        if ($checkTable && $checkTable->num_rows > 0) {
+            $stmt = $conn->prepare("INSERT INTO activity_logs (user_id, user_name, action, details, created_at) VALUES (?, ?, ?, ?, NOW())");
+            if ($stmt) {
+                $stmt->bind_param("isss", $user_id, $user_name, $action, $details);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
     } catch (Exception $e) {
         // Silently fail - don't break the main functionality
         error_log("Activity log error: " . $e->getMessage());
@@ -98,11 +104,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // --- Role change restrictions ---
         if ($user['role'] === 'super_admin' && $role !== 'super_admin') {
             $countStmt = $conn->query("SELECT COUNT(*) AS total FROM users WHERE role = 'super_admin'");
-            $countRow = $countStmt->fetch_assoc();
-            if ((int)$countRow['total'] <= 1) {
-                $errors[] = "Cannot demote the only Super Admin. At least one Super Admin must exist.";
-            } elseif ($userId === $loggedInId) {
-                $errors[] = "You cannot demote your own Super Admin account.";
+            if ($countStmt) {
+                $countRow = $countStmt->fetch_assoc();
+                if ((int)$countRow['total'] <= 1) {
+                    $errors[] = "Cannot demote the only Super Admin. At least one Super Admin must exist.";
+                } elseif ($userId === $loggedInId) {
+                    $errors[] = "You cannot demote your own Super Admin account.";
+                }
             }
         }
 
@@ -113,13 +121,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // --- Check if username/email already taken by another user ---
         if (empty($errors)) {
             $stmtCheck = $conn->prepare("SELECT user_id FROM users WHERE (username = ? OR email = ?) AND user_id != ?");
-            $stmtCheck->bind_param("ssi", $username, $email, $userId);
-            $stmtCheck->execute();
-            $checkResult = $stmtCheck->get_result();
-            if ($checkResult->num_rows > 0) {
-                $errors[] = "Username or email already taken by another user.";
+            if ($stmtCheck) {
+                $stmtCheck->bind_param("ssi", $username, $email, $userId);
+                $stmtCheck->execute();
+                $checkResult = $stmtCheck->get_result();
+                if ($checkResult->num_rows > 0) {
+                    $errors[] = "Username or email already taken by another user.";
+                }
+                $stmtCheck->close();
             }
-            $stmtCheck->close();
         }
 
         // --- Password update (optional) ---
@@ -139,13 +149,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($updatePassword) {
                 $hashed = password_hash($password, PASSWORD_BCRYPT);
                 $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, phone = ?, password = ?, role = ?, status = ? WHERE user_id = ?");
-                $stmt->bind_param("ssssssi", $username, $email, $phone, $hashed, $role, $status, $userId);
+                if ($stmt) {
+                    $stmt->bind_param("ssssssi", $username, $email, $phone, $hashed, $role, $status, $userId);
+                }
             } else {
                 $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, phone = ?, role = ?, status = ? WHERE user_id = ?");
-                $stmt->bind_param("sssssi", $username, $email, $phone, $role, $status, $userId);
+                if ($stmt) {
+                    $stmt->bind_param("sssssi", $username, $email, $phone, $role, $status, $userId);
+                }
             }
 
-            if ($stmt->execute()) {
+            if ($stmt && $stmt->execute()) {
                 // --- LOG ACTIVITY ---
                 $user_name = $_SESSION['full_name'] ?? 'Admin';
                 log_activity($conn, $_SESSION['user_id'], $user_name, 'User Updated', "Updated user: $username (ID: $userId) - New role: $role, New status: $status");
@@ -160,9 +174,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['role'] = $role;
                 }
             } else {
-                $errors[] = "Database error: " . $conn->error;
+                $errors[] = "Database error: " . ($stmt ? $conn->error : "Statement preparation failed");
             }
-            $stmt->close();
+            if ($stmt) {
+                $stmt->close();
+            }
         }
     }
 }

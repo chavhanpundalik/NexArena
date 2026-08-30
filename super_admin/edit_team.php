@@ -37,15 +37,23 @@ if ($userResult) {
 
 // Get all sports for dropdown
 $sports = [];
-$sportResult = $conn->query("SELECT DISTINCT sport FROM teams WHERE sport IS NOT NULL AND sport != '' ORDER BY sport");
-if ($sportResult) {
+$sportResult = $conn->query("SELECT sport_id, sport_name FROM sports ORDER BY sport_name");
+if ($sportResult && $sportResult->num_rows > 0) {
     while ($row = $sportResult->fetch_assoc()) {
-        $sports[] = $row['sport'];
+        $sports[] = $row;
     }
-}
-// Add some default sports if empty
-if (empty($sports)) {
-    $sports = ['Football', 'Basketball', 'Cricket', 'Volleyball', 'Tennis', 'Badminton', 'Hockey', 'Rugby'];
+} else {
+    // If no sports table exists, use default sports
+    $sports = [
+        ['sport_id' => 1, 'sport_name' => 'Football'],
+        ['sport_id' => 2, 'sport_name' => 'Basketball'],
+        ['sport_id' => 3, 'sport_name' => 'Cricket'],
+        ['sport_id' => 4, 'sport_name' => 'Volleyball'],
+        ['sport_id' => 5, 'sport_name' => 'Tennis'],
+        ['sport_id' => 6, 'sport_name' => 'Badminton'],
+        ['sport_id' => 7, 'sport_name' => 'Hockey'],
+        ['sport_id' => 8, 'sport_name' => 'Rugby']
+    ];
 }
 
 // Handle form submission
@@ -53,7 +61,7 @@ $message = '';
 $messageType = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $team_name = trim($_POST['team_name'] ?? '');
-    $sport = trim($_POST['sport'] ?? '');
+    $sport_id = !empty($_POST['sport_id']) ? (int)$_POST['sport_id'] : 0;
     $game = trim($_POST['game'] ?? '');
     $captain_id = !empty($_POST['captain_id']) ? (int)$_POST['captain_id'] : null;
     $status = $_POST['status'] ?? 'active';
@@ -64,13 +72,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Validate
     $errors = [];
-    if (empty($team_name)) { $errors[] = "Team name is required"; }
-    if (empty($sport)) { $errors[] = "Sport is required"; }
+    if (empty($team_name)) { 
+        $errors[] = "Team name is required"; 
+    }
+    if (empty($sport_id) || $sport_id <= 0) { 
+        $errors[] = "Sport is required"; 
+    }
     
     if (empty($errors)) {
         $updateSql = "UPDATE teams SET 
                         team_name = ?, 
-                        sport = ?, 
+                        sport_id = ?, 
                         game = ?, 
                         captain_id = ?, 
                         status = ?, 
@@ -81,35 +93,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       WHERE team_id = ?";
         
         $stmt = $conn->prepare($updateSql);
-        $stmt->bind_param("sssisisisi", 
-            $team_name, 
-            $sport, 
-            $game, 
-            $captain_id, 
-            $status, 
-            $max_players, 
-            $description, 
-            $region, 
-            $is_private, 
-            $teamId
+        $stmt->bind_param("sisisissii", 
+            $team_name,    
+            $sport_id,     
+            $game,         
+            $captain_id,   
+            $status,       
+            $max_players,  
+            $description,  
+            $region,       
+            $is_private,   
+            $teamId        
         );
         
         if ($stmt->execute()) {
             $message = "Team updated successfully!";
             $messageType = "success";
+            $stmt->close(); // Close the update statement
             
-            // Refresh team data
-            $stmt = $conn->prepare("SELECT * FROM teams WHERE team_id = ?");
-            $stmt->bind_param("i", $teamId);
-            $stmt->execute();
-            $result = $stmt->get_result();
+            // Refresh team data with a NEW statement
+            $refreshStmt = $conn->prepare("SELECT * FROM teams WHERE team_id = ?");
+            $refreshStmt->bind_param("i", $teamId);
+            $refreshStmt->execute();
+            $result = $refreshStmt->get_result();
             $team = $result->fetch_assoc();
-            $stmt->close();
+            $refreshStmt->close(); // Close the refresh statement
         } else {
             $message = "Error updating team: " . $conn->error;
             $messageType = "error";
+            $stmt->close();
         }
-        $stmt->close();
     } else {
         $message = implode("<br>", $errors);
         $messageType = "error";
@@ -135,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .form-group .required { color:#dc2626; }
         .form-control { width:100%; padding:10px 14px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; transition:0.2s; }
         .form-control:focus { outline:none; border-color:#8b5cf6; box-shadow:0 0 0 3px rgba(139,92,246,0.1); }
-        .form-control textarea { min-height:100px; resize:vertical; }
+        textarea.form-control { min-height:100px; resize:vertical; }
         .form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
         .form-check { display:flex; align-items:center; gap:10px; }
         .form-check input[type="checkbox"] { width:18px; height:18px; }
@@ -147,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .alert { padding:12px 16px; border-radius:8px; margin-bottom:20px; }
         .alert-success { background:#dcfce7; border:1px solid #86efac; color:#16a34a; }
         .alert-error { background:#fef2f2; border:1px solid #fca5a5; color:#dc2626; }
-        .logo-preview { width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #e5e7eb; margin-top:10px; }
         @media (max-width:600px) { .form-row { grid-template-columns:1fr; } }
     </style>
 </head>
@@ -166,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
         
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
             <div class="form-row">
                 <div class="form-group">
                     <label>Team Name <span class="required">*</span></label>
@@ -174,12 +186,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group">
                     <label>Sport <span class="required">*</span></label>
-                    <input type="text" name="sport" class="form-control" value="<?= htmlspecialchars($team['sport']); ?>" list="sports-list" required>
-                    <datalist id="sports-list">
-                        <?php foreach ($sports as $s): ?>
-                            <option value="<?= htmlspecialchars($s); ?>">
+                    <select name="sport_id" class="form-control" required>
+                        <option value="">Select Sport</option>
+                        <?php foreach ($sports as $sport): ?>
+                            <option value="<?= $sport['sport_id']; ?>" <?= ($team['sport_id'] == $sport['sport_id']) ? 'selected' : ''; ?>>
+                                <?= htmlspecialchars($sport['sport_name']); ?>
+                            </option>
                         <?php endforeach; ?>
-                    </datalist>
+                    </select>
                 </div>
             </div>
             
@@ -209,10 +223,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label>Status</label>
                     <select name="status" class="form-control">
-                        <option value="active" <?= $team['status'] == 'active' ? 'selected' : ''; ?>>Active</option>
-                        <option value="inactive" <?= $team['status'] == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
-                        <option value="full" <?= $team['status'] == 'full' ? 'selected' : ''; ?>>Full</option>
-                        <option value="disbanded" <?= $team['status'] == 'disbanded' ? 'selected' : ''; ?>>Disbanded</option>
+                        <option value="active" <?= ($team['status'] == 'active') ? 'selected' : ''; ?>>Active</option>
+                        <option value="inactive" <?= ($team['status'] == 'inactive') ? 'selected' : ''; ?>>Inactive</option>
+                        <option value="full" <?= ($team['status'] == 'full') ? 'selected' : ''; ?>>Full</option>
+                        <option value="disbanded" <?= ($team['status'] == 'disbanded') ? 'selected' : ''; ?>>Disbanded</option>
                     </select>
                 </div>
             </div>

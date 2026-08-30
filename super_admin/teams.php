@@ -17,26 +17,37 @@ $totalTeams = 0;
 $sportsList = [];
 
 $result = $conn->query("SELECT COUNT(*) AS total FROM teams");
-if ($result) { $row = $result->fetch_assoc(); $totalTeams = (int)$row['total']; }
+if ($result) { 
+    $row = $result->fetch_assoc(); 
+    $totalTeams = (int)$row['total']; 
+}
 
-// Get distinct sports
-$result = $conn->query("SELECT DISTINCT sport FROM teams WHERE sport IS NOT NULL AND sport != '' ORDER BY sport");
-if ($result) { while ($row = $result->fetch_assoc()) { $sportsList[] = $row['sport']; } }
+// Get distinct sports from sports table
+$result = $conn->query("SELECT DISTINCT sport_name FROM sports ORDER BY sport_name");
+if ($result) { 
+    while ($row = $result->fetch_assoc()) { 
+        $sportsList[] = $row['sport_name']; 
+    }
+}
 
 // --- Build query with correct columns ---
 $sql = "SELECT 
             t.team_id, 
             t.team_name, 
-            t.sport, 
+            t.sport_id,
             t.game,
             t.description, 
             t.captain_id,
             t.status,
             t.max_players,
             t.created_at,
-            u.username AS captain_name
+            t.region,
+            t.is_private,
+            u.username AS captain_name,
+            s.sport_name
         FROM teams t
         LEFT JOIN users u ON t.captain_id = u.user_id
+        LEFT JOIN sports s ON t.sport_id = s.sport_id
         WHERE 1=1";
 
 $params = [];
@@ -51,7 +62,7 @@ if ($search !== '') {
     $types .= "sss";
 }
 if ($sport !== '') {
-    $sql .= " AND t.sport = ?";
+    $sql .= " AND s.sport_name = ?";
     $params[] = $sport;
     $types .= "s";
 }
@@ -100,6 +111,17 @@ $stmt->close();
             font-size: 11px;
             background: #e0e7ff;
             color: #4f46e5;
+        }
+        .sport-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+        .sport-badge i {
+            margin-right: 4px;
         }
     </style>
 </head>
@@ -207,7 +229,7 @@ $stmt->close();
                             <td>
                                 <span class="sport-badge">
                                     <i class="fa-regular fa-futbol"></i> 
-                                    <?= htmlspecialchars($team['sport'] ?? 'Not specified'); ?>
+                                    <?= htmlspecialchars($team['sport_name'] ?? 'Not specified'); ?>
                                 </span>
                             </td>
                             <td>
